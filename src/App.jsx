@@ -1,15 +1,17 @@
 import './App.css'
-import LoginSingUp from './LoginSingUp';
+import Login from './pages/login/Login'
 import Logo from './assets/Logo.png'
+
 function App() {
+
   return (
     <>
-    <div className='Title-Container'>
-      <img src={Logo} alt='Title' style={{ width: '400px', height: '400px' }} />
-    </div>
-    <LoginSingUp />
+      <div className='Title-Container'>
+        <img src={Logo} alt='Title' style={{ width: '400px', height: '400px' }} />
+      </div>
+      <Login />
     </>
-    
-  );
-};
-export default App;
+  )
+}
+
+export default App
