@@ -2,91 +2,39 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: 400px; /* Ajusta según sea necesario */
-  background: #fff;
-  padding-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
   position: fixed;
-  border-radius: 10px; /* Bordes redondeados */
-  top: 100px; /* Ajusta según sea necesario */
-right: 80px; /* Ajusta según sea necesario */
+  top: 100px;
+  right: 80px;
 }
 
-
-/* Encabezado */
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra los elementos horizontalmente */
-  gap: 9px;
-  width: 100%;
-  margin-top: 5px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.text {
-  color: #3c009d;
-  font-size: 40px;
+.header h1 {
+  color: #6d5010;
+  font-size: 24px;
   font-weight: 700;
-  text-align: center; /* Centra el texto dentro del contenedor */
+  font-family:  Helvetica ;
 }
 
-/* Contenedor de los inputs */
-.inputs {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-/* Estilo de los inputs */
-.input {
-  display: flex; /* Asegura que los elementos internos se alineen bien */
-  align-items: center; /* Centra verticalmente los elementos internos */
-  margin: auto;
-  width: 300px; /* Ancho fijo para los inputs */
-  height: 60px; /* Altura fija para los inputs */
-  background: #eaeaea;
-  border-radius: 10px; /* Bordes redondeados */
-  padding: 0 10px; /* Espacio interno para los elementos */
-}
-
-/* Imagen dentro del input */
-.input img {
-  margin: 10px; /* Espacio alrededor de la imagen */
-  max-width: 30px; /* Ajusta el tamaño de la imagen si es necesario */
-  height: auto;
-}
-
-
-.input input {
-  height: 50px;
-  width: 100%; /* Ancho completo del contenedor */
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #797979;
-  font-size: 19px;
- 
-}
-.forgot-password{
-  padding-left:100px ;
-  margin-top: 15px;
-  color: #797979;
-  font-size: 15px;
-}
-.forgot-password span{
-  color:#4c00b4;
-  cursor: pointer;
-}
 .button-container {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espacio entre los botones */
   align-items: center;
+  gap: 20px;
 }
 
 .button {
-  display: block;
-  padding: 10px 15px;
+  padding: 10px;
   border: none;
   background-color: #007bff;
   color: white;
@@ -94,14 +42,15 @@ right: 80px; /* Ajusta según sea necesario */
   border-radius: 5px;
   cursor: pointer;
   width: 100px;
-  margin-top: 15px;
-
+  text-align: center;
+  margin-top: 10px;
 }
 
 .button:hover {
   background-color: #4c00b4;
 }
-.gray{
+
+.gray {
   background: gray;
   color: white;
 }
