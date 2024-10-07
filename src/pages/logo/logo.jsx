@@ -1,8 +1,9 @@
-import './App.css'
-import Login from './pages/login/Login'
-import Logo from './assets/Logo.png'
+import './logo.css'
+import Login from '../login/Login'
+import Logo from "../../assets/Logo.png"
 import React from 'react'
-function App() {
+
+const logo = () => {
 
   return (
     <>
@@ -13,5 +14,4 @@ function App() {
     </>
   )
 }
-
-export default App
+export default logo;
