@@ -7,12 +7,12 @@
   }
   
   .erosion-text {
-    background-color: white; 
+    background-color: white; /* Fondo blanco */
     padding: 20px; /* Espaciado interno */
-    border-radius: 8px; 
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
-    font-size: 18px; 
-    line-height: 1.6; 
-    color: #333; 
-    max-width: 600px; 
+    border-radius: 8px; /* Bordes redondeados opcionales */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar el texto */
+    font-size: 18px; /* Tamaño de fuente */
+    line-height: 1.6; /* Espaciado entre líneas */
+    color: #333; /* Color del texto */
+    max-width: 600px; /* Ancho máximo del texto */
   }
