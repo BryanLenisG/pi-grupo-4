@@ -1,0 +1,18 @@
+.erosion-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Para centrar el texto verticalmente */
+    padding: 20px;
+  }
+  
+  .erosion-text {
+    background-color: white; 
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    font-size: 18px; 
+    line-height: 1.6; 
+    color: #333; 
+    max-width: 600px; 
+  }
