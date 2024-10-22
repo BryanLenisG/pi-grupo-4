@@ -1,4 +1,4 @@
-import './Erosion.css'; // Asegúrate de tener un archivo CSS importado
+import './Erosion.css'; 
 
 const Erosion = () => {
   return (
