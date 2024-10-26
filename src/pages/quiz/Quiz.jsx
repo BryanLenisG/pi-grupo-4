@@ -33,7 +33,7 @@ const Quiz = () => {
           <OrbitControls autoRotate={false} />
           <Ant position={[-5, -2, 0]} />
         </Canvas>
-
+ 
       </div>
     
       <br />

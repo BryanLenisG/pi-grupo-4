@@ -13,6 +13,8 @@ const useQuizStore = create((set) => ({
       quiz: { ...state.quiz, ...quizUpdates },
     })),
 
+
+    
   clearQuiz: () =>
     set({
       quiz: {
