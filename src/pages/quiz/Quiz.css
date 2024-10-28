@@ -1,20 +1,23 @@
 .quiz-container {
-    position: relative;
-    background-image: url('../../assets/fondo.jpg');
-    background-size: cover; /* Para que la imagen cubra todo el fondo */
-    background-position: center; /* Centra la imagen */
+    position: absolute;
     background-repeat: no-repeat;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.text-button{
+  position: absolute;
+  color: black;
+  top: 5px; 
+  right: 60px;
 
+}
 .button-logout {
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 10; /* Asegura que el botón esté sobre el canvas */
+    z-index: 10; /* sobre el canva */
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -22,13 +25,31 @@
     border-radius: 5px;
     cursor: pointer;
   }
-  
-  .button-menu {
-    position: absolute; 
-    top: 20px; 
-    left: 20px; 
-    z-index: 1; 
-  }
+  .button-container {
+    display: flex;
+    flex-direction: column; /* Alinea los botones en columna */
+    position: absolute;
+    top: 200px; /* Ajusta según el diseño deseado */
+    right: 500px;
+    z-index: 10; /* Encima del Canvas */
+    gap: 20px; /* Espacio entre cada botón */
+    background-color: white;
+    width: 400px; /* Ancho fijo */
+    height: 350px; /* Alto fijo */
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.button-menu button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 160px; /* Ajusta el ancho según lo necesites */
+}
 
   .button-logout:hover {
     background-color: #0056b3;

@@ -17,7 +17,6 @@ const Quiz = () => {
     navigate('/');
   }, [logout, navigate]);
 
-  // Función para manejar la navegación a diferentes rutas
   const handleButton = (route) => {
     navigate(route);
   };
@@ -25,21 +24,22 @@ const Quiz = () => {
   return (
     <div>
       <div className="quiz-container">
-        <Canvas camera={{ position: [20, 0, 10], zoom: 5 }}
-          style={{ width: "130vw", height: "100vh", position: "absolute" }} >
+        <Canvas camera={{ position: [50, 0, 10], zoom: 8 }}
+          style={{ width: "130vw", height: "80vh", position: "absolute" }} >
 
           <ambientLight intensity={0.5} />
           <directionalLight position={[10, 10, 10]} intensity={7} />
           <OrbitControls autoRotate={false} />
-          <Ant position={[-5, -2, 0]} />
+          <Ant position={[10, -3.5, 0]} />
         </Canvas>
  
       </div>
-    
-      <br />
-      <div className="button-menu">
-          {/* Botones para redirigir a diferentes páginas */}
-          <button className="button-biodiversity" onClick={() => handleButton('/Biodiversity')}>
+      
+      <div className="button-container">
+        <div className="text-button"> 
+          <h2>Selecciona una opción</h2>
+        </div>
+        <button className="button-biodiversity" onClick={() => handleButton('/Biodiversity')}>
             Ir a Biodiversidad
           </button>
           <button className="button-deforest" onClick={() => handleButton('/Deforest')}>
