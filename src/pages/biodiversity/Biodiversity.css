@@ -1,9 +1,10 @@
 .Bio-container {
-    display: flex;
+    display: absolute;
     justify-content: center;
     align-items: center;
-    height: 50vh; 
-    padding: 20px;
+    height: 60vh; 
+    padding: 40px;
+    margin-left:350px;
   }
   
   .BioText-introduction {
@@ -14,12 +15,13 @@
     font-size: 18px; 
     line-height: 1.6; 
     color: #333; 
-    max-width: 600px; 
+    max-width: 400px; 
+    
   }
   .button-back {
     position: absolute;
     top: 20px;
-    left: 20px;
+    left: 30px;
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -27,4 +29,23 @@
     border-radius: 5px;
     cursor: pointer;
     z-index: 10;
+
+}
+.rana {
+  position: absolute;
+  width: 80%; 
+  max-width: 350px; 
+  border-radius: 10px; 
+  margin: 20px auto; 
+  top: 50px ;
+  left: 100 px;
+}
+.colibri{
+  position: absolute;
+  width: 80%; 
+  max-width: 350px; 
+  border-radius: 10px; 
+  margin: 20px auto; 
+  top: 300px; /* Mover un poco hacia abajo */
+  left: 950px; /* Aumentar el valor para mover más a la derecha */
 }
