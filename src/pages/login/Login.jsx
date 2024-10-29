@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import "./Login.css";
-import { useCallback, useEffect } from "react";
 import useAuthStore from "../../stores/use-auth-store";
 import UserDAO from "../../daos/UserDAO";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-
-  const handleinvite = () =>{
-    navigate("/Quiz")
-  };
-
+  const navigate = useNavigate(); // Asegúrate de definir navigate antes de usarlo
   const [action, setAction] = useState("Login");
-
-  const { user, loginGoogleWithPopUp, logout, observeAuthState, loading } =
-    useAuthStore();
-
-  const navigate = useNavigate();
+  const { user, loginGoogleWithPopUp, logout, observeAuthState, loading } = useAuthStore();
 
   useEffect(() => {
     observeAuthState();
@@ -42,21 +33,28 @@ const Login = () => {
     logout();
   }, [logout]);
 
+  const handleInvite = () => {
+    navigate("/Quiz");
+  };
+
   if (loading) {
     return <p className="loading-text">Cargando...</p>;
   }
 
   return (
-    <div className="container">
-      <div className="header"> 
-        <h1>Bienvenidos a PLANET ENERGY</h1>
-      </div>
+        
       <div className="button-container">
-        <button className={action === "Sing Up" ? "button gray" : "button"} onClick={() => { handleLogin("Login") }}>Login</button>
-        <button onClick={handleinvite}>invitado</button>
+        <h1>Inicia sesión</h1>
+        <button
+          className={action === "Sign Up" ? "button gray" : "button"}
+          onClick={() => handleLogin("Login")}
+        >
+          Login
+        </button>
+        <button onClick={handleInvite}>Invitado</button>
       </div>
-    </div>
   );
+  
 };
 
 export default Login;
