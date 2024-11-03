@@ -16,4 +16,12 @@
     color: #333; /* Color del texto */
     max-width: 600px; /* Ancho máximo del texto */
   }
+  .earth-container {
+    position: absolute;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   
