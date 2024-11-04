@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
 
   const handleinvite = () =>{
-    navigate("/Quiz")
+    navigate("/Home")
   };
 
   const [action, setAction] = useState("Login");
@@ -30,7 +30,7 @@ const Login = () => {
         photo: user.photoURL,
       };
       UserDAO.createUser(newUser);
-      navigate("/Quiz");
+      navigate("/Home");
     }
   }, [user, navigate]);
 

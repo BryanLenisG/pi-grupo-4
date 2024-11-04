@@ -1,5 +1,5 @@
-import { useGLTF, useAnimations, useTexture, OrbitControls } from '@react-three/drei'
-import React, { useMemo, useRef } from 'react'
+import { useGLTF, useTexture, OrbitControls } from '@react-three/drei'
+import React, { useMemo } from 'react'
 
 const EarthErosion = (props) => {
     const { nodes, materials } = useGLTF("../../models-3d/earth-erosion.glb")
@@ -21,9 +21,9 @@ const EarthErosion = (props) => {
                         castShadow
                         receiveShadow
                         geometry={nodes.earth_Earth_0.geometry}
-                        position={[-100, 5, 0]}
+                        position={[-50, 5, -50]}
                         rotation={[-Math.PI / 2, 0, 0]}
-                        scale={50}
+                        scale={30}
                     >
                         <meshStandardMaterial
                             map={earthMaterial.map}
