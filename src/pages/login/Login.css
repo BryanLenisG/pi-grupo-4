@@ -16,7 +16,7 @@
   align-items: center;
   right: 850px;
 }
-
+/* 
 .button {
   padding: 10px;
   border: none;
@@ -28,7 +28,7 @@
   text-align: center;
   width: 100px;
   margin-top: 10px;
-}
+} */
 
 .button:hover {
   background-color: #4c00b4;

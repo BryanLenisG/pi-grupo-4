@@ -5,7 +5,11 @@ import UserDAO from "../../daos/UserDAO";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate(); // Asegúrate de definir navigate antes de usarlo
+
+  const handleinvite = () =>{
+    navigate("/Quiz")
+  };
+
   const [action, setAction] = useState("Login");
   const { user, loginGoogleWithPopUp, logout, observeAuthState, loading } = useAuthStore();
 
@@ -21,7 +25,7 @@ const Login = () => {
         photo: user.photoURL,
       };
       UserDAO.createUser(newUser);
-      navigate("/Quiz");
+      navigate("/Home");
     }
   }, [user, navigate]);
 
