@@ -5,10 +5,9 @@
     height: 100vh; /* Para centrar el texto verticalmente */
     padding: 20px;
   }
-  .body {
-    background-color: #139e59; /* Color de fondo */
-  }
-  .erosion-text {
+ 
+  erosion-text {
+    position: fixed;
     background-color: white; /* Fondo blanco */
     padding: 20px; /* Espaciado interno */
     border-radius: 8px; /* Bordes redondeados opcionales */
@@ -19,7 +18,7 @@
     max-width: 600px; /* Ancho máximo del texto */
   }
   .earth-container {
-    position: absolute;
+    position: fixed;
     background-repeat: no-repeat;
     height: 100vh;
     display: flex;
