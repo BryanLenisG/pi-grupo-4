@@ -1,11 +1,15 @@
 button {
   padding: 10px 20px;
   font-size: medium;
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   background-color: #007bff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+body {
+  background-color: #07a77f; /* Color de fondo */
 }
 
 button:hover {

@@ -4,11 +4,14 @@ import { useCallback, useEffect } from "react";
 import useAuthStore from "../../stores/use-auth-store";
 import UserDAO from "../../daos/UserDAO";
 import { useNavigate } from "react-router-dom";
+import { Button } from 'react-bootstrap';
+import Home from '../home/Home';
+
 
 const Login = () => {
 
   const handleinvite = () =>{
-    navigate("/Quiz")
+    navigate("/Home")
   };
 
   const [action, setAction] = useState("Login");
@@ -30,7 +33,7 @@ const Login = () => {
         photo: user.photoURL,
       };
       UserDAO.createUser(newUser);
-      navigate("/Quiz");
+      navigate("/Home");
     }
   }, [user, navigate]);
 
@@ -52,8 +55,8 @@ const Login = () => {
         <h1>Bienvenidos a PLANET ENERGY</h1>
       </div>
       <div className="button-container">
-        <button className={action === "Sing Up" ? "button gray" : "button"} onClick={() => { handleLogin("Login") }}>Login</button>
-        <button onClick={handleinvite}>invitado</button>
+      <Button className={action === "Sing Up" ? "button gray" : "button"} onClick={() => { handleLogin("Login") }}>Login</Button>
+      <Button variant="secondary" onClick={handleinvite}>invitado</Button>
       </div>
     </div>
   );

@@ -3,20 +3,25 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+   
 }
+.body {
+    background-color: #139e59; /* Color de fondo */
+  }
 
 /* Estilo del contenedor principal */
 .container-deforest {
-    color: #1656ce;
+    color: #000000;
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #d2fbf5;
+    background-color: #e6e6e6;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
-.button-back {
+.button-back {  
     position: absolute;
     top: 20px;
     left: 30px;
