@@ -1,17 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import './Deforest.css'; 
-
-
-
+import Navbarcom from '../../components/Navbarcom';
 
 const Deforest = () => {
   const navigate = useNavigate();
 const handleBack = () => {
   navigate(-1); 
 };
+
     return (
-      <div className="container-deforest">
-      <h1>LA DEFORESTACION</h1>
+     
+     <><Navbarcom /><div className="container-deforest">
+      
+      <h1>LA DEFORESTACION 1 </h1>
       <p>Esta práctica afecta a los bosques y al clima global, tiene unas causas e impactos que atacan directamente al medio ambiente. Conoce las causas y soluciones para combatirla.</p>
       
       <h1>Causas de la deforestación</h1>
@@ -27,8 +28,8 @@ const handleBack = () => {
         Volver
       </button>
 
-      </div>
-
+      </div></>
+     
      
 );
   };

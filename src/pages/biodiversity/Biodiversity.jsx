@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import rana from '../../assets/rana.jpg';
 import colibri from '../../assets/colibri.jpg';
 import './Biodiversity.css';
+import Navbarcom from '../../components/Navbarcom';
 
 const Biodiversity = () => {
   const navigate = useNavigate(); // Importa y usa el hook useNavigate
@@ -12,7 +13,7 @@ const Biodiversity = () => {
 
   return (
     <>
-    
+    <Navbarcom/>
     <div className="Bio-container">
     <h2>Pérdida de Biodiversidad</h2>
       <p className="BioText-introduction">
@@ -33,9 +34,7 @@ const Biodiversity = () => {
         Especies invasoras: La introducción de especies no nativas desequilibra los ecosistemas.<br/>
       </p>
       
-      <button className="button-back" onClick={handleBack}>
-        Volver
-      </button>
+     
     </div>
     <img src={rana} alt="Rana" className="rana" />
     <img src={colibri} alt="Colibri" className="colibri" />

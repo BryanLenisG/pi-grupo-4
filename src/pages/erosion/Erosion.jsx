@@ -1,20 +1,20 @@
-  import './Erosion.css';
-  import { Canvas } from "react-three-fiber";
-  import { useNavigate } from 'react-router-dom';
-  import Earth from "../../components/model-3d/EarthErosion"
-  import { OrbitControls, useHelper } from "@react-three/drei";
+import './Erosion.css'; 
+import { Canvas } from "react-three-fiber";
+import { useNavigate } from 'react-router-dom';
+import Ant from "../../components/model-3d/ant";
+import Earth from "../../components/model-3d/EarthErosion"
+import { OrbitControls, useHelper } from "@react-three/drei";
+import Navbarcom from '../../components/Navbarcom';
 import { useRef } from 'react';
 import { SpotLightHelper } from 'three';
 
-  const Erosion = () => {
-    const navigate = useNavigate();
-    // const spotLightRef = useRef();
-    // useHelper(spotLightRef, SpotLightHelper);
-    const handleBack = () => {
-      navigate(-1);
-    };
-    return (
-      <div>
+const Erosion = () => {
+  const navigate = useNavigate();
+  const handleBack = () => {
+    navigate(-1); 
+};
+  return (
+    <><Navbarcom /><div>
         <div className="earth-container">
           <Canvas shadows camera={{ position: [40, 10, 10], zoom: 8 }}
             style={{ width: "130vw", height: "80vh", position: "absolute" }} >
@@ -50,13 +50,9 @@ import { SpotLightHelper } from 'three';
           <p className="erosion-text">
             La erosión del suelo es un proceso natural que ocurre cuando la capa superior de la tierra es arrastrada o desgastada por factores como el agua, el viento o la actividad humana.
           </p>
-          <button className="button-back" onClick={handleBack}>
-            Volver
-          </button>
-        </div>
-      </div>
-
-    );
-  };
-
+      
+    </div>
+    </div></>
+  )
+};
   export default Erosion;

@@ -5,8 +5,8 @@
     height: 100vh; /* Para centrar el texto verticalmente */
     padding: 20px;
   }
-  
-  .erosion-text {
+ 
+  erosion-text {
     position: fixed;
     background-color: white; /* Fondo blanco */
     padding: 20px; /* Espaciado interno */

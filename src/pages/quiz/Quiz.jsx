@@ -8,6 +8,10 @@ import { useNavigate } from 'react-router-dom';
 import "../../pages/biodiversity/Biodiversity";
 import "../../pages/deforest/Deforest";
 import "../../pages/erosion/Erosion";
+import "../../pages/home/Home";
+import Navbarcom from "../../components/Navbarcom";
+import { Button } from "react-bootstrap";
+
 const Quiz = () => {
   const { logout } = useAuthStore();
   const navigate = useNavigate();
@@ -23,6 +27,7 @@ const Quiz = () => {
 
   return (
     <div>
+      <Navbarcom/>
       <div className="quiz-container">
         <Canvas camera={{ position: [50, 0, 10], zoom: 8 }}
           style={{ width: "130vw", height: "80vh", position: "absolute" }} >
@@ -38,20 +43,18 @@ const Quiz = () => {
       <div className="button-container">
         <div className="text-button"> 
           <h2>Selecciona una opción</h2>
-        </div>
-        <button className="button-biodiversity" onClick={() => handleButton('/Biodiversity')}>
+          </div>
+        <Button variant="outline-primary" onClick={() => handleButton('/Biodiversity')}>
             Ir a Biodiversidad
-          </button>
-          <button className="button-deforest" onClick={() => handleButton('/Deforest')}>
+          </Button>
+          <Button variant="outline-primary" onClick={() => handleButton('/Deforest')}>
             Ir a Deforestación
-          </button>
-          <button className="button-erosion" onClick={() => handleButton('/Erosion')}>
+          </Button>
+          <Button variant="outline-primary" onClick={() => handleButton('/Erosion')}>
             Ir a Erosión
-          </button>
+          </Button>
         </div>
-      <button className="button-logout" onClick={handleLogout}>
-        Cerrar sesión
-      </button>
+     
     </div>
     
   );

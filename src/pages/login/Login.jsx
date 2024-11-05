@@ -3,6 +3,9 @@ import "./Login.css";
 import useAuthStore from "../../stores/use-auth-store";
 import UserDAO from "../../daos/UserDAO";
 import { useNavigate } from "react-router-dom";
+import { Button } from 'react-bootstrap';
+import Home from '../home/Home';
+
 
 const Login = () => {
 
@@ -46,17 +49,12 @@ const Login = () => {
   }
 
   return (
-        
+    <div>   
       <div className="button-container">
-        <h1>Inicia sesión</h1>
-        <button
-          className={action === "Sign Up" ? "button gray" : "button"}
-          onClick={() => handleLogin("Login")}
-        >
-          Login
-        </button>
-        <button onClick={handleInvite}>Invitado</button>
+        <button className={action === "Sing Up" ? "button gray" : "button"} onClick={() => { handleLogin("Login") }}>Login</button>
+        <button onClick={handleinvite}>invitado</button>
       </div>
+    </div>
   );
   
 };
