@@ -9,7 +9,7 @@ button {
 }
 
 body {
-  background-color: #07a77f; /* Color de fondo */
+  background: rgb(153, 233, 128);
 }
 
 button:hover {
@@ -20,4 +20,5 @@ button:hover {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  user-select: none;
 };
