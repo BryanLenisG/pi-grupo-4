@@ -8,6 +8,7 @@ import Deforest from "./pages/deforest/Deforest.jsx";
 import Erosion from "./pages/erosion/Erosion.jsx";
 import Home from "./pages/home/Home.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./index.css";
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
