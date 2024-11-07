@@ -8,7 +8,7 @@ const logo = () => {
   return (
     <>
       <div className='Title-Container'>
-        <img src={Logo} alt='Title' style={{ width: '400px', height: '400px' }} />
+        <img src={Logo} alt='Title' style={{ width: '150px', height: '150px' }} />
       </div>
       <Login />
     </>

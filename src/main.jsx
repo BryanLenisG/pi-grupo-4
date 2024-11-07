@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Quiz from "./pages/quiz/Quiz.jsx";
 import Logo from "./pages/logo/logo.jsx";
 import Biodiversity from "./pages/biodiversity/Biodiversity.jsx";
 import Deforest from "./pages/deforest/Deforest.jsx";
@@ -32,10 +31,7 @@ const router = createBrowserRouter([
     path: "/Home",
     element: <Home />,
   },
-  {
-    path: "/Quiz",
-    element: <Quiz />,
-  },
+  
   {
     path: "/Biodiversity",
     element: <Biodiversity />,
