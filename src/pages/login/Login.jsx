@@ -5,12 +5,11 @@ import useAuthStore from "../../stores/use-auth-store";
 import UserDAO from "../../daos/UserDAO";
 import { useNavigate } from "react-router-dom";
 import { Button } from 'react-bootstrap';
-import Home from '../home/Home';
+import logogroup from '../../assets/Logo.png';
 
 
 const Login = () => {
-
-  const handleinvite = () =>{
+  const handleinvite = () => {
     navigate("/Home")
   };
 
@@ -50,13 +49,21 @@ const Login = () => {
   }
 
   return (
-    <div className="container">
-      <div className="header"> 
-        <h1>Bienvenidos a PLANET ENERGY</h1>
-      </div>
-      <div className="button-container">
-      <Button className={action === "Sing Up" ? "button gray" : "button"} onClick={() => { handleLogin("Login") }}>Login</Button>
-      <Button variant="secondary" onClick={handleinvite}>invitado</Button>
+    <div className="login-container">
+      <div className="login-box">
+        <h1>Bienvenidos</h1>
+        <img src={logogroup} alt="Logogrupo" className="logo-L" />
+        <div className="button-container">
+          <Button
+            className={`button ${action === "Sing Up" ? "gray" : ""}`}
+            onClick={() => handleLogin("Login")}
+          >
+            Iniciar sesión
+          </Button>
+          <Button variant="secondary" onClick={handleinvite}>
+            Ingresar como invitado
+          </Button>
+        </div>
       </div>
     </div>
   );

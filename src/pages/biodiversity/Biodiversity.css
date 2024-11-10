@@ -1,51 +1,92 @@
-.Bio-container {
-    display: absolute;
-    justify-content: center;
-    align-items: center;
-    height: 60vh; 
-    padding: 40px;
-    margin-left:350px;
-  }
-  
-  .BioText-introduction {
-    background-color: white; 
-    padding: 20px; 
-    border-radius: 10px; 
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
-    font-size: 18px; 
-    line-height: 1.6; 
-    color: #333; 
-    max-width: 400px; 
-    
-  }
-  .button-back {
-    position: absolute;
-    top: 20px;
-    left: 30px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 10;
-
+.navbar {
+  background-color: #ffffff;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding: 0 20px; 
 }
+
+.logo {
+  width: 100px; 
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  justify-content: center; 
+  margin: 0;
+  flex: 1; 
+}
+
+.navbar-list li {
+  margin: 0 20px;
+}
+
+.navbar-list a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.navbar-list a:hover {
+  background-color: #00b318;
+}
+
+.Bio-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  height: auto;
+  padding: 40px;
+  margin-top: 80px; 
+  text-align: center;
+}
+
+.BioText-introduction {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  max-width: 500px;
+  margin: 20px auto; 
+}
+
+.frog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: transparent;
+  height: 100vh;
+}
+
+.rana, .colibri {
+  width: 80%;
+  max-width: 350px;
+  border-radius: 10px;
+  margin: 20px auto;
+}
+
 .rana {
   position: absolute;
-  width: 80%; 
-  max-width: 350px; 
-  border-radius: 10px; 
-  margin: 20px auto; 
-  top: 50px ;
-  left: 100 px;
+  top: 150px;
 }
-.colibri{
+
+.colibri {
   position: absolute;
-  width: 80%; 
-  max-width: 350px; 
-  border-radius: 10px; 
-  margin: 20px auto; 
-  top: 300px; /* Mover un poco hacia abajo */
-  left: 950px; /* Aumentar el valor para mover más a la derecha */
+  top: 550px;
+  left: 950px;
 }

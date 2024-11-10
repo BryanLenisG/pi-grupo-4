@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Logo from "./pages/logo/logo.jsx";
 import Biodiversity from "./pages/biodiversity/Biodiversity.jsx";
 import Deforest from "./pages/deforest/Deforest.jsx";
 import Erosion from "./pages/erosion/Erosion.jsx";
@@ -10,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from "./pages/login/Login.jsx";
 
 function main(){
   <Router>
@@ -25,7 +25,7 @@ function main(){
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Logo />,
+    element: <Login />,
   },
   {
     path: "/Home",
