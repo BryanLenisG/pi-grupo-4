@@ -7,6 +7,7 @@ import Frog from '../../components/model-3d/Frog';
 import { Canvas } from '@react-three/fiber';
 import Title3DB from '../../components/Title3d';
 import logo from '../../assets/Logo.png';
+import Navbarcom from '../../components/Navbarcom';
 
 const Biodiversity = () => {
   const navigate = useNavigate(); 
@@ -16,18 +17,7 @@ const Biodiversity = () => {
   };
 
   return (
-    <>    
-      <nav className="navbar">
-        <img src={logo} alt="Logo" className="logo" />
-        <ul className="navbar-list">
-          <li><a href="/Home">Inicio</a></li>
-          <li><a href="/Deforest">Deforestacion</a></li>
-          <li><a href="/Biodiversity">Biodiversidad</a></li>
-          <li><a href="/Erosion">Erosión</a></li>
-          <li><a href="/">Cerrar sesion</a></li>
-        </ul>
-      </nav>
-
+    <><Navbarcom /><div></div>
       <div className="Bio-container">
         <p className="BioText-introduction">
           "Cada día, miles de especies desaparecen del planeta,
