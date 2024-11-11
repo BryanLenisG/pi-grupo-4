@@ -26,11 +26,10 @@
   align-items: center;
 }
 .button-continue {
-position: absolute;
+position: center;
 top: 20px;
 right: 30px;
-padding: 10px 20px;
-background-color: #007bff;
+background-color: white;
 color: white;
 border: none;
 border-radius: 5px;

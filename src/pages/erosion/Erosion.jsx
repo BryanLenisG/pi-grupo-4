@@ -1,20 +1,26 @@
 import './Erosion.css'; 
 import { Canvas } from "react-three-fiber";
 import { useNavigate } from 'react-router-dom';
-import Ant from "../../components/model-3d/ant";
 import Earth from "../../components/model-3d/EarthErosion"
-import { OrbitControls, useHelper } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import Navbarcom from '../../components/Navbarcom';
-import { useRef } from 'react';
+import { useCallback } from 'react';
 import { SpotLightHelper } from 'three';
+import Erosion_text from './Erosion_text';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const Erosion = () => {
   const navigate = useNavigate();
+  const handleNavigateToErosin3D = useCallback(() => {
+    navigate('/Erosion_model_3D');
+  }, [navigate]);
   const handleBack = () => {
-    navigate(-1); 
-};
+    navigate(-1);
+  };
   return (
-    <><Navbarcom /><div>
+    <><Navbarcom />
+    <div>
         <div className="earth-container">
           <Canvas shadows camera={{ position: [40, 10, 10], zoom: 8 }}
             style={{ width: "130vw", height: "80vh", position: "absolute" }} >
@@ -47,9 +53,17 @@ const Erosion = () => {
         </div>
 
         <div className="erosion-container">
+        <Canvas shadows camera={{ position: [40, 10, 10], zoom: 8 }} 
+        style={{ width: "130vw", height: "80vh", position: "relative" }}>
+          <Erosion_text />
+          <OrbitControls />
+        </Canvas>
           <p className="erosion-text">
             La erosión del suelo es un proceso natural que ocurre cuando la capa superior de la tierra es arrastrada o desgastada por factores como el agua, el viento o la actividad humana.
           </p>
+        <Form className="button-continue">
+            <Button variant="outline-success" onClick={handleNavigateToErosin3D}>Continuar</Button>
+        </Form>
       
     </div>
     </div></>
