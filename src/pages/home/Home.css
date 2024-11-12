@@ -32,7 +32,7 @@
   }
 
   .button-continuar {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px; /* Cambia 'rigth' por 'left' para mover el botón a la izquierda */
     z-index: 10; /* sobre el canva */

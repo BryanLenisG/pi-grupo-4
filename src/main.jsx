@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 import Erosion_model_3D from "./pages/erosion/erosion_model_3D/Erosion_model_3D.jsx"
 import QuizErosion from "./pages/erosion/quiz_erosion/QuizErosion.jsx"
+import SensibilizacionErosion from "./pages/erosion/quiz_erosion/SensibilizacionErosion.jsx"
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from "./pages/login/Login.jsx";
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: "/QuizErosion",
     element: <QuizErosion />,
+  },
+  {
+    path: "/SensibilizacionErosion",
+    element: <SensibilizacionErosion />,
   },
 ]);
 createRoot(document.getElementById("root")).render(
