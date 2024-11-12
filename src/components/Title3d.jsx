@@ -7,9 +7,9 @@ const TitleBiodiversity = () => {
         occlude
         className="text-3D"
         center
-        distanceFactor={500}
+        distanceFactor={450}
         transform
-        position={[50, 60, 20]}
+        position={[50, 90, 20]}
         >
             <h4>La ranita esta en peligro..</h4>    
         </Html>

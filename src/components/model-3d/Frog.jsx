@@ -4,8 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 const Frog = (props) => {
   const { nodes, materials } = useGLTF("../../models-3d/Frog.glb");
 
-  // Estado para las posiciones X, Y, Z de la rana
-  const [position, setPosition] = useState([0, 1, 0]);  // Valor inicial [X, Y, Z]
+
+  const [position, setPosition] = useState([0, 1, 70]);  // Valor inicial [X, Y, Z]
   const frogRef = useRef();
 
   // Manejar las teclas presionadas para mover el modelo
