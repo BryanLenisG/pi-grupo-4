@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import colibri from '../../assets/colibri.jpg';
 import rana from '../../assets/rana.jpg';
 import './Biodiversity.css';
-import { OrbitControls } from '@react-three/drei';
+import { Cloud, OrbitControls, Sky } from '@react-three/drei';
 import Frog from '../../components/model-3d/Frog';
 import { Canvas } from '@react-three/fiber';
 import Title3DB from '../../components/Title3d';
@@ -19,6 +19,7 @@ const Biodiversity = () => {
   return (
     <><Navbarcom /><div></div>
       <div className="Bio-container">
+        <h2 className='Bio-title'>La perdida de biodiversidad</h2>
         <p className="BioText-introduction">
           "Cada día, miles de especies desaparecen del planeta,
           afectando el equilibrio de los ecosistemas que sustentan 
@@ -40,8 +41,8 @@ const Biodiversity = () => {
 
       <div>
         <div className='frog-container'>
-          <Canvas shadows camera={{ position: [500, 5, 200], zoom: 5 }}
-            style={{ width: "350vw", height: "80vh", position: "absolute" }} >
+          <Canvas shadows camera={{ position: [0, 0, 380], zoom: 1 }}
+            style={{ width: "100vw", height: "80vh", position: "absolute" }} >
 
             <ambientLight intensity={1.5} />
             
@@ -60,6 +61,7 @@ const Biodiversity = () => {
             <Title3DB/>
             <OrbitControls />
             <Frog position={[0, 1, 3]} scale={2} />
+            <Sky/>
           </Canvas>
         </div>
       </div>

@@ -51,6 +51,10 @@
   margin-top: 80px; 
   text-align: center;
 }
+.Bio-title{
+  margin: 0 auto;
+  font-size: 50px; 
+}
 
 .BioText-introduction {
   background-color: white;
@@ -83,6 +87,12 @@
 .rana {
   position: absolute;
   top: 150px;
+}
+.frog-container{
+  margin:0 auto;
+  width: 300px; /* O el tamaño deseado */
+  height: 70vh; /* O el tamaño deseado */
+  position: relative;
 }
 
 .colibri {
