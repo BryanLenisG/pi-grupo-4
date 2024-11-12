@@ -1,0 +1,10 @@
+.button-continue-quiz-erosion {
+    position: fixed;
+    top: 600px;
+    left: 650px; /* Cambia 'rigth' por 'left' para mover el botón a la izquierda */
+    background-color: white;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
