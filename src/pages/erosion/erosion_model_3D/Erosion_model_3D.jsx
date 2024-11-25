@@ -10,7 +10,7 @@ import { useCallback } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-// import Staging from '../staging/Staging';
+import Staging from './staging/Staging';
 import { Physics } from "@react-three/rapier";
 
 const Erosion_model_3D = () => {
@@ -24,25 +24,26 @@ const Erosion_model_3D = () => {
         <Canvas shadows camera={{ position: [40, 10, 10], zoom: 8 }}
           style={{ width: "130vw", height: "80vh", position: "absolute" }} >
             <Physics 
-            gravity={[0, 0, 0]}>            
-          <ambientLight intensity={1.5} castShadow />
-          <directionalLight />
-          <Title3DB2 />
-          <ArbolOne scale={30}
-            position={[0, -1, 0]} />
+                gravity={[0, 0, 0]}>            
+              <ambientLight intensity={1.5} castShadow />
+              <directionalLight />
+              <Title3DB2 />
+              <ArbolOne scale={30}
+                position={[0, -1, 0]} />
 
-            
-            <Escena scale={30}
-            position={[0, -1, 0]} 
-            />
+                
+                <Escena scale={30}
+                position={[0, -1, 0]} 
+                />
 
-            {/* <Staging /> */}
-            <Pelota scale={10}
-            position={[6, 1, 14  ]} />
+
+                <Pelota scale={10}
+                position={[6, 1, 14  ]} />
 
             </Physics>
 
-            <Rabbit scale={0.1} position={[12, 0.5, 12]}/>
+          <Rabbit scale={0.1} position={[12, 0.5, 12]}/>
+          <Staging />
         </Canvas>
 
       </div>
