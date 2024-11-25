@@ -3,8 +3,8 @@ import './Deforest.css';
 import Navbarcom from '../../components/Navbarcom';
 import Tree from '../../components/model-3d/Tree';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sky } from '@react-three/drei'; // Agregar Sky desde Drei
-import { useRef } from 'react';
+import { OrbitControls, Sky } from '@react-three/drei';
+import { useState, useRef } from 'react';
 
 const RotatingTree = () => {
   const treeRef = useRef();
@@ -48,6 +48,12 @@ const Deforest = () => {
     navigate(-1); 
   };
 
+  // Estado para manejar la visibilidad del contenido completo
+  const [showMore, setShowMore] = useState(false);
+
+  // Función para manejar el "Ver más"
+  const toggleShowMore = () => setShowMore(prev => !prev);
+
   return (
     <>
       <Navbarcom />
@@ -57,20 +63,42 @@ const Deforest = () => {
           Esta práctica afecta a los bosques y al clima global, tiene unas causas e impactos que atacan directamente al medio ambiente. Conoce las causas y soluciones para combatirla.
         </p>
         
-        <h1>Causas de la deforestación</h1>
-        <p>
-          Entre las principales causas de la deforestación se encuentra la agricultura comercial...
-        </p>
+        {/* Botón "Ver más" para expandir el contenido */}
+        <button onClick={toggleShowMore} className="ver-mas-btn">
+          {showMore ? 'Ver menos' : 'Ver más'}
+        </button>
 
-        <h1>Impactos de la deforestación</h1>
-        <p>
-          La deforestación tiene múltiples consecuencias negativas...
-        </p>
+        {/* Contenido expandible */}
+        {showMore && (
+          <div className="more-info">
+            {/* Causas de la deforestación */}
+            <h1>Causas de la deforestación</h1>
+            <p>
+              Entre las principales causas de la deforestación se encuentra la agricultura comercial...
+            </p>
+            <p>
+              Algunas otras causas incluyen la ganadería, la expansión urbana, la tala ilegal, y la minería.
+            </p>
 
-        <h1>Soluciones para combatir la deforestación</h1>
-        <p>
-          Para mitigar la deforestación y sus efectos, es crucial adoptar una estrategia multifacética...
-        </p>
+            {/* Impactos de la deforestación */}
+            <h1>Impactos de la deforestación</h1>
+            <p>
+              La deforestación tiene múltiples consecuencias negativas...
+            </p>
+            <p>
+              Estos incluyen la pérdida de biodiversidad, el cambio climático, y la alteración del ciclo del agua.
+            </p>
+
+            {/* Soluciones para combatir la deforestación */}
+            <h1>Soluciones para combatir la deforestación</h1>
+            <p>
+              Para mitigar la deforestación y sus efectos, es crucial adoptar una estrategia multifacética...
+            </p>
+            <p>
+              Algunas soluciones son promover la reforestación, la agricultura sostenible, y el fortalecimiento de leyes contra la tala ilegal.
+            </p>
+          </div>
+        )}
 
         {/* Canvas para el modelo 3D */}
         <Canvas

@@ -33,3 +33,21 @@
     cursor: pointer;
     z-index: 10;
 }
+
+.ver-mas-btn {
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .ver-mas-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .more-info {
+    margin-top: 20px;
+  }
+  
