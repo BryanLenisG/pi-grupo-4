@@ -9,20 +9,48 @@ import { useState, useRef } from 'react';
 const RotatingTree = () => {
   const treeRef = useRef();
   const lightRef = useRef();
+  const [isShaking, setIsShaking] = useState(false);
+  const [shakeTime, setShakeTime] = useState(0);
 
   // Rotación del modelo y de la luz
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (treeRef.current) {
       treeRef.current.rotation.y += 0.001; // Ajusta la velocidad de rotación
     }
     if (lightRef.current) {
       lightRef.current.rotation.y += 0.001; // Asegura que la luz también gire con el modelo
     }
+
+    // Animar vibración
+    if (isShaking && treeRef.current) {
+      setShakeTime((prev) => prev + delta);
+      const shakeAmplitude = 0.1; // Ajusta la intensidad de la vibración
+      treeRef.current.position.x += (Math.random() - 0.5) * shakeAmplitude;
+      treeRef.current.position.y += (Math.random() - 0.5) * shakeAmplitude;
+
+      // Finalizar vibración después de 0.5 segundos
+      if (shakeTime > 0.5) {
+        setIsShaking(false);
+        setShakeTime(0);
+        treeRef.current.position.set(0, 2.57, 0); // Restablecer posición original
+      }
+    }
   });
+
+  // Manejar clic en el árbol
+  const handleClick = () => {
+    setIsShaking(true);
+  };
 
   return (
     <>
-      <Tree ref={treeRef} position={[0, 2.57, 0]} scale={2} castShadow />
+      <Tree
+        ref={treeRef}
+        position={[0, 2.57, 0]}
+        scale={2}
+        castShadow
+        onPointerDown={handleClick} // Evento de clic
+      />
       <directionalLight
         ref={lightRef}
         castShadow
@@ -52,7 +80,7 @@ const Deforest = () => {
   const [showMore, setShowMore] = useState(false);
 
   // Función para manejar el "Ver más"
-  const toggleShowMore = () => setShowMore(prev => !prev);
+  const toggleShowMore = () => setShowMore((prev) => !prev);
 
   return (
     <>
@@ -71,7 +99,6 @@ const Deforest = () => {
         {/* Contenido expandible */}
         {showMore && (
           <div className="more-info">
-            {/* Causas de la deforestación */}
             <h1>Causas de la deforestación</h1>
             <p>
               Entre las principales causas de la deforestación se encuentra la agricultura comercial...
@@ -80,7 +107,6 @@ const Deforest = () => {
               Algunas otras causas incluyen la ganadería, la expansión urbana, la tala ilegal, y la minería.
             </p>
 
-            {/* Impactos de la deforestación */}
             <h1>Impactos de la deforestación</h1>
             <p>
               La deforestación tiene múltiples consecuencias negativas...
@@ -89,7 +115,6 @@ const Deforest = () => {
               Estos incluyen la pérdida de biodiversidad, el cambio climático, y la alteración del ciclo del agua.
             </p>
 
-            {/* Soluciones para combatir la deforestación */}
             <h1>Soluciones para combatir la deforestación</h1>
             <p>
               Para mitigar la deforestación y sus efectos, es crucial adoptar una estrategia multifacética...
@@ -103,30 +128,25 @@ const Deforest = () => {
         {/* Canvas para el modelo 3D */}
         <Canvas
           shadows
-          camera={{ position: [20, 10, 20], fov: 30 }} // Mejor ajuste de cámara
+          camera={{ position: [20, 10, 20], fov: 30 }}
           style={{ width: '100%', height: '300px' }}
         >
-          {/* Agregar un cielo al fondo */}
           <Sky 
-            azimuth={0.25} // dirección del sol (roto en el cielo)
-            inclination={0.5} // altura del sol en el cielo
-            distance={450000} // control de la "distancia" del cielo
-            sunPosition={[100, 100, 100]} // posición del sol
+            azimuth={0.25}
+            inclination={0.5}
+            distance={450000}
+            sunPosition={[100, 100, 100]}
           />
 
-          {/* Iluminación ambiental */}
           <ambientLight intensity={0.5} />
 
-          {/* Luz direccional */}
           <RotatingTree />
 
-          {/* Plano receptor de sombras */}
           <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
             <planeGeometry args={[50, 50]} />
             <shadowMaterial opacity={0.5} />
           </mesh>
 
-          {/* Controles de cámara */}
           <OrbitControls />
         </Canvas>
 
