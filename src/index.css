@@ -1,0 +1,24 @@
+button {
+  padding: 10px 20px;
+  font-size: medium;
+  color: hsl(0, 0%, 100%);
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+body {
+  background: rgb(153, 233, 128);
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  user-select: none;
+};

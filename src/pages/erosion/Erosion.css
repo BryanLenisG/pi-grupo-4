@@ -1,0 +1,38 @@
+.erosion-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Para centrar el texto verticalmente */
+  padding: 20px;
+}
+
+.erosion-text {
+  position: fixed;
+  background-color: white; /* Fondo blanco */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados opcionales */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar el texto */
+  font-size: 18px; /* Tamaño de fuente */
+  line-height: 1.6; /* Espaciado entre líneas */
+  color: #333; /* Color del texto */
+  max-width: 600px; /* Ancho máximo del texto */
+}
+.earth-container {
+  position: fixed;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-continue {
+position: center;
+top: 20px;
+right: 30px;
+background-color: white;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+z-index: 10;
+}

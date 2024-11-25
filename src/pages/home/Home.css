@@ -1,0 +1,64 @@
+.home-container-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 40vh; /* Para centrar el texto verticalmente */
+    padding: 20px;
+  }
+  .home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Para alinear elementos en fila */
+    gap: 20px; /* Espacio entre la imagen y el texto */
+    padding: 20px;
+}
+  .home-title {
+    font-size: 80px; 
+    color: #333; 
+    margin-bottom: 20px; /* Espacio debajo del título */
+  }
+  
+  .home-text {
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    font-size: 18px; 
+    line-height: 1.6; /* Espaciado entre líneas */
+    color: #333; 
+    max-width: 600px; 
+  }
+
+  .button-continuar {
+    position: fixed;
+    top: 20px;
+    left: 20px; /* Cambia 'rigth' por 'left' para mover el botón a la izquierda */
+    z-index: 10; /* sobre el canva */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-logout {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Mantiene el botón de logout a la derecha */
+    z-index: 10; /* sobre el canva */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save_our_planet {
+    width: 80%; 
+    max-width: 350px; 
+    border-radius: 10px; 
+}

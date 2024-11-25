@@ -1,0 +1,64 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ajusta la altura para centrar */
+  font-family: Arial, sans-serif;
+  color: #333; /* Color del texto */
+  text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+.question-section h2 {
+  background-color: white; /* Fondo blanco */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados opcionales */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar el texto */
+  font-size: 24px; /* Tamaño de fuente */
+  line-height: 1.6; /* Espaciado entre líneas */
+  max-width: 600px; /* Ancho máximo del texto */
+  margin-bottom: 20px;
+  text-align: center; /* Centra el texto */
+}
+
+.answer-section {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones se ajusten a nuevas filas */
+  justify-content: center; /* Centra los botones */
+  gap: 15px; /* Espacio entre botones */
+}
+
+.answer-section button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px; /* Ancho fijo para los botones */
+  margin: 5px; /* Espacio entre los botones */
+  background-color: #4CAF50; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none;
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s;
+}
+
+.answer-section button:hover {
+  background-color: #45a049; /* Color al pasar el mouse */
+}
+
+.score-section {
+  background-color: white; /* Fondo blanco */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados opcionales */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar el texto */
+  font-size: 24px; /* Tamaño de fuente */
+  line-height: 1.6; /* Espaciado entre líneas */
+  color: #333; /* Color del texto */
+  max-width: 600px; /* Ancho máximo del texto */
+  margin-top: 20px;
+  text-align: center; /* Centra el texto */
+}
