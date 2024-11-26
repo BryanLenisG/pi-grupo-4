@@ -2,14 +2,101 @@ import { useNavigate } from 'react-router-dom';
 import './Deforest.css'; 
 import Navbarcom from '../../components/Navbarcom';
 import Tree from '../../components/model-3d/Tree';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Sky, Text } from '@react-three/drei';
+import { useState, useRef } from 'react';
+
+const RotatingTree = () => {
+  const treeRef = useRef();
+  const lightRef = useRef();
+  const [isShaking, setIsShaking] = useState(false);
+  const [shakeTime, setShakeTime] = useState(0);
+
+  // Rotación del modelo y de la luz
+  useFrame((state, delta) => {
+    if (treeRef.current) {
+      treeRef.current.rotation.y += 0.001; // Ajusta la velocidad de rotación
+    }
+    if (lightRef.current) {
+      lightRef.current.rotation.y += 0.001; // Asegura que la luz también gire con el modelo
+    }
+
+    // Animar vibración
+    if (isShaking && treeRef.current) {
+      setShakeTime((prev) => prev + delta);
+      const shakeAmplitude = 0.1; // Ajusta la intensidad de la vibración
+      treeRef.current.position.x += (Math.random() - 0.5) * shakeAmplitude;
+      treeRef.current.position.y += (Math.random() - 0.5) * shakeAmplitude;
+
+      // Finalizar vibración después de 0.5 segundos
+      if (shakeTime > 0.5) {
+        setIsShaking(false);
+        setShakeTime(0);
+        treeRef.current.position.set(0, 2.57, 0); // Restablecer posición original
+      }
+    }
+  });
+
+  // Manejar clic en el árbol
+  const handleClick = () => {
+    setIsShaking(true);
+  };
+
+  return (
+    <>
+      <Text
+        position={[0, 4, 0]} // Posición del texto (sobre el árbol)
+        fontSize={2}       // Tamaño del texto
+        color="red"        // Color del texto
+        anchorX="center"     // Anclar al centro horizontalmente
+        anchorY="middle"     // Anclar al medio verticalmente
+      >
+        Haz click al árbol
+      </Text>
+      <Tree
+        ref={treeRef}
+        position={[0, 2.57, 0]}
+        scale={2}
+        castShadow
+        onPointerDown={handleClick} // Evento de clic
+      />
+      <directionalLight
+        ref={lightRef}
+        castShadow
+        position={[10, 20, 10]}
+        intensity={1}
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
+        shadow-camera-near={1}
+        shadow-camera-far={50}
+        shadow-camera-left={-15}
+        shadow-camera-right={15}
+        shadow-camera-top={15}
+        shadow-camera-bottom={-15}
+        shadow-bias={-0.002}
+      />
+    </>
+  );
+};
 
 const Deforest = () => {
   const navigate = useNavigate();
+
+  // Función para manejar el botón de regreso
   const handleBack = () => {
     navigate(-1); 
   };
+
+  // Función para manejar el botón de "Realizar Quiz"
+  const handleQuiz = () => {
+    navigate('/quiz'); // Cambiar por furuta ruta*****
+  };
+
+  // Estado para manejar la visibilidad del contenido completo
+  const [showMore, setShowMore] = useState(false);
+
+  // Función para manejar el "Ver más"
+  const toggleShowMore = () => setShowMore((prev) => !prev);
 
   return (
     <>
@@ -20,64 +107,74 @@ const Deforest = () => {
           Esta práctica afecta a los bosques y al clima global, tiene unas causas e impactos que atacan directamente al medio ambiente. Conoce las causas y soluciones para combatirla.
         </p>
         
-        <h1>Causas de la deforestación</h1>
-        <p>
-          Entre las principales causas de la deforestación se encuentra la agricultura comercial...
-        </p>
+        {/* Botón "Ver más" para expandir el contenido */}
+        <button onClick={toggleShowMore} className="ver-mas-btn">
+          {showMore ? 'Ver menos' : 'Ver más'}
+        </button>
 
-        <h1>Impactos de la deforestación</h1>
-        <p>
-          La deforestación tiene múltiples consecuencias negativas...
-        </p>
+        {/* Contenido expandible */}
+        {showMore && (
+          <div className="more-info">
+            <h1>Causas de la deforestación</h1>
+            <p>
+              Entre las principales causas de la deforestación se encuentra la agricultura comercial...
+            </p>
+            <p>
+              Algunas otras causas incluyen la ganadería, la expansión urbana, la tala ilegal, y la minería.
+            </p>
 
-        <h1>Soluciones para combatir la deforestación</h1>
-        <p>
-          Para mitigar la deforestación y sus efectos, es crucial adoptar una estrategia multifacética...
-        </p>
+            <h1>Impactos de la deforestación</h1>
+            <p>
+              La deforestación tiene múltiples consecuencias negativas...
+            </p>
+            <p>
+              Estos incluyen la pérdida de biodiversidad, el cambio climático, y la alteración del ciclo del agua.
+            </p>
+
+            <h1>Soluciones para combatir la deforestación</h1>
+            <p>
+              Para mitigar la deforestación y sus efectos, es crucial adoptar una estrategia multifacética...
+            </p>
+            <p>
+              Algunas soluciones son promover la reforestación, la agricultura sostenible, y el fortalecimiento de leyes contra la tala ilegal.
+            </p>
+          </div>
+        )}
 
         {/* Canvas para el modelo 3D */}
         <Canvas
-          shadows // Habilitar sombras
-          camera={{ position: [10, 10, 10], fov: 50 }}
-          style={{ width: '100%', height: '600px' }}
+          shadows
+          camera={{ position: [20, 10, 20], fov: 30 }}
+          style={{ width: '100%', height: '300px' }}
         >
-          {/* Iluminación ambiental suave */}
-          <ambientLight intensity={0.5} />
-
-          {/* Luz direccional para crear sombras */}
-          <directionalLight
-            castShadow
-            position={[5, 10, 5]}
-            intensity={1}
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
-            shadow-camera-near={0.5}
-            shadow-camera-far={50}
-            shadow-camera-left={-10}
-            shadow-camera-right={10}
-            shadow-camera-top={10}
-            shadow-camera-bottom={-10}
+          <Sky 
+            azimuth={0.25}
+            inclination={0.5}
+            distance={450000}
+            sunPosition={[100, 100, 100]}
           />
 
-          {/* Luz puntual adicional */}
-          <pointLight position={[-10, 10, -10]} intensity={0.5} />
+          <ambientLight intensity={0.5} />
 
-          {/* Plano receptor de sombras */}
-          <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
+          <RotatingTree />
+
+          <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
             <planeGeometry args={[50, 50]} />
-            <shadowMaterial opacity={0.3} />
+            <shadowMaterial opacity={0.5} />
           </mesh>
 
-          {/* Modelo del árbol */}
-          <Tree position={[0, 0, 0]} scale={2} />
-
-          {/* Controles de cámara */}
           <OrbitControls />
         </Canvas>
 
-        <button className="button-back" onClick={handleBack}>
-          Volver
-        </button>
+        {/* Botones de interacción */}
+        <div className="button-group">
+          <button className="button-back" onClick={handleBack}>
+            Volver
+          </button>
+          <button className="button-quiz" onClick={handleQuiz}>
+            Realizar Quiz
+          </button>
+        </div>
       </div>
     </>
   );
