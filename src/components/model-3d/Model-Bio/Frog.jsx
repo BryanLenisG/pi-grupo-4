@@ -1,15 +1,16 @@
 import { useGLTF } from '@react-three/drei';
-import { useState, useEffect, useRef } from 'react';
+import { RigidBody } from '@react-three/rapier';
+import { useState, useEffect, useRef, useCallback } from 'react';
+
 
 const Frog = (props) => {
   const { nodes, materials } = useGLTF("../../models-3d/Frog.glb");
-
-
-  const [position, setPosition] = useState([0, 1, 70]);  // Valor inicial [X, Y, Z]
+  const [position, setPosition] = useState([-10, -60, 0]);  // Valor inicial [X, Y, Z]
   const frogRef = useRef();
 
   // Manejar las teclas presionadas para mover el modelo
   useEffect(() => {
+
     const handleKeyDown = (event) => {
       let newPosition = [...position];
 
@@ -36,6 +37,7 @@ const Frog = (props) => {
 
       // Actualizar el estado con la nueva posición
       setPosition(newPosition);
+
     };
 
     // Añadir el evento de escucha cuando el componente se monta
@@ -47,33 +49,48 @@ const Frog = (props) => {
     };
   }, [position]);
 
+  // const handleFrog= useCallback(() => {
+  //   frogRef.current.addTorque({ x: 0, y: 10, z: -5 }, true);
+  //   }, []);
   return (
-    <group {...props} dispose={null} scale={[0.5, 0.5, 0.5]} position={position} ref={frogRef}>
-      <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
-          <group name="73d8868d7414472898889cf5a032e3c1fbx" rotation={[Math.PI / 2, 0, 0]}>
-            <group name="Object_2">
-              <group name="RootNode">
-                <group name="Hoja" position={[-40.176, -76.042, -196.252]} rotation={[0, -1.396, 0.054]}>
-                  <mesh name="Hoja_Hoja_0" geometry={nodes.Hoja_Hoja_0.geometry} material={materials.Hoja} />
-                </group>
-                <group name="Ojo_1_1" position={[-36.408, 78.715, 108.876]} rotation={[-0.279, 0.327, -0.16]}>
-                  <group name="Object_7">
-                    <primitive object={nodes._rootJoint} />
-                    <skinnedMesh
-                      name="Object_10"
-                      geometry={nodes.Object_10.geometry}
-                      material={materials.lambert4SG}
-                      skeleton={nodes.Object_10.skeleton}
-                    />
-                    <group name="Object_9" position={[-36.408, 78.715, 108.876]} rotation={[-0.279, 0.327, -0.16]} />
-                  </group>
+
+    <group {...props} dispose={null} scale={[0.2, 0.2, 0.2]} castShadow >
+      {/* <RigidBody ref={frogRef} colliders='trimesh' friction={2}  type='fixed'> */}
+        <group name="Scene">
+          <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+            <group name="73d8868d7414472898889cf5a032e3c1fbx" rotation={[Math.PI / 2, 0, 0]}>
+              <group name="Object_2">
+                <group name="RootNode">
+                  <group
+                    name="Hoja"
+                    position={[-40.176, -76.042, -196.252]}
+                    rotation={[0, -1.396, 0.054]}
+                  />
+
+                  <group
+                    name="Ojo_1_1"
+                    position={[-36.408, 78.715, 108.876]}
+                    rotation={[-0.279, 0.327, -0.16]}
+                  />
                 </group>
               </group>
             </group>
           </group>
+          <mesh
+            name="Object_10"
+            geometry={nodes.Object_10.geometry}
+            material={materials.lambert4SG}
+            onClick = {() => alert("La rana esta en peligro de extincion..")}
+            // onClick={handleFrog}
+          />
+          <group
+            name="Object_9"
+            position={[-36.408, 78.715, 108.876]}
+            rotation={[-0.279, 0.327, -0.16]}
+          />
         </group>
-      </group>
+        {/* <CuboidCollider args={[0.1,0.5,0.1]} position={props.position}/> */}
+      {/* </RigidBody> */}
     </group>
   );
 };

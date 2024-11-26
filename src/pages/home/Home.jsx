@@ -24,28 +24,30 @@ const Home = () => {
   return (
     <div>
       <Navbarcom />
-      <div className="home-container">
-        <Canvas camera={{ position: [50, 0, 10], zoom: 8 }}
-          style={{ width: "130vw", height: "80vh", position: "absolute" }} >
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 10]} intensity={7} />
-          <OrbitControls autoRotate={false} />
-          <Ant position={[10, -3.5, 0]} />
-        </Canvas>
-      </div>
       <div>
         <div className="home-container-title">
           <h1 className="home-title">
-            Bienvenidos
+            Bienvenidos a nuestra página de navegacion interactiva 3D.
           </h1>
         </div>
         <div className="home-container">
           <p className="home-text">
-            La tierra es el hogar que compartimos con millones de especies. Hoy tenemos desafios críticos como deforestación, pérdida de biodiversidad y erosión de suelos. Ésta página es un espacio para aprender, reflexionar y aprender juntos.
-          </p>
+            Explora nuestro mundo virtual en 3D y descubre los desafios medioambientales más críticos que enfrentamos hoy en dia.
+            Navega a través de paisajes detallados y aprende sobre la pérdida de biodiversidad, la deforestación y la erosión.
+            Sumérgete en esta experiencia educativa y visualiza el impacto de nuestras acciones en el planeta. 
+            </p>
           <img src={save_our_planet} alt="save_our_planet" className="save_our_planet" />
         </div>
 
+      </div>
+      <div className="home-container">
+        <Canvas camera={{ position: [50, 0, 10], zoom: 8 }}
+          style={{ width: "130vw", height: "80vh", position: "absolute" }} >
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[10, 10, 10]} intensity={5} />
+          <OrbitControls autoRotate={false} />
+          <Ant position={[10, 0, 0]} />
+        </Canvas>
       </div>
     </div>
   );

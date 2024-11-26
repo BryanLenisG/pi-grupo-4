@@ -1,13 +1,13 @@
 import { useGLTF, useAnimations } from '@react-three/drei'
 import React, { useRef } from 'react'
 
-const Ant = (props) => { 
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF("../../models-3d/ant.glb")
-  const { actions } = useAnimations(animations, group)
+const Ant = (...props) => { 
+  const antRef = useRef();
+  const { nodes, materials } = useGLTF("../../models-3d/ant.glb")
+ 
   
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={antRef}scale={[2.5, 2.5, 2.5]}>
       <group name="Scene">
         <group name="Light" position={[4.003, 5.17, -0.949]} rotation={[2.492, -0.035, 3.046]} />
         <group name="Camera" position={[-3.104, 2.201, -6.328]} rotation={[1.811, -0.23, 2.7]} />
