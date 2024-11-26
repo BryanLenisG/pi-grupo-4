@@ -3,7 +3,7 @@ import './Deforest.css';
 import Navbarcom from '../../components/Navbarcom';
 import Tree from '../../components/model-3d/Tree';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sky } from '@react-three/drei';
+import { OrbitControls, Sky, Text } from '@react-three/drei';
 import { useState, useRef } from 'react';
 
 const RotatingTree = () => {
@@ -44,6 +44,15 @@ const RotatingTree = () => {
 
   return (
     <>
+      <Text
+        position={[0, 4, 0]} // Posición del texto (sobre el árbol)
+        fontSize={2}       // Tamaño del texto
+        color="red"        // Color del texto
+        anchorX="center"     // Anclar al centro horizontalmente
+        anchorY="middle"     // Anclar al medio verticalmente
+      >
+        Haz click al árbol
+      </Text>
       <Tree
         ref={treeRef}
         position={[0, 2.57, 0]}
@@ -80,7 +89,7 @@ const Deforest = () => {
 
   // Función para manejar el botón de "Realizar Quiz"
   const handleQuiz = () => {
-    navigate('/quiz'); // Cambia '/quiz' al nombre de tu ruta para el quiz
+    navigate('/quiz'); // Cambiar por furuta ruta*****
   };
 
   // Estado para manejar la visibilidad del contenido completo
