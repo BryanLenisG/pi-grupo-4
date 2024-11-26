@@ -72,8 +72,15 @@ const RotatingTree = () => {
 
 const Deforest = () => {
   const navigate = useNavigate();
+
+  // Función para manejar el botón de regreso
   const handleBack = () => {
     navigate(-1); 
+  };
+
+  // Función para manejar el botón de "Realizar Quiz"
+  const handleQuiz = () => {
+    navigate('/quiz'); // Cambia '/quiz' al nombre de tu ruta para el quiz
   };
 
   // Estado para manejar la visibilidad del contenido completo
@@ -150,9 +157,15 @@ const Deforest = () => {
           <OrbitControls />
         </Canvas>
 
-        <button className="button-back" onClick={handleBack}>
-          Volver
-        </button>
+        {/* Botones de interacción */}
+        <div className="button-group">
+          <button className="button-back" onClick={handleBack}>
+            Volver
+          </button>
+          <button className="button-quiz" onClick={handleQuiz}>
+            Realizar Quiz
+          </button>
+        </div>
       </div>
     </>
   );
