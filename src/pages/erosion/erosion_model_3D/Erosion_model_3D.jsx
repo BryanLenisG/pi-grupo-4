@@ -6,22 +6,30 @@ import Rabbit from "../../../components/model-3d/Rabbit"
 import { Canvas } from "react-three-fiber";
 import Navbarcom from '../../../components/Navbarcom';
 import Title3DB2 from '../../../components/Title3d_escena_erosion';
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import Staging from './staging/Staging';
 import { Physics } from "@react-three/rapier";
+import { PositionalAudio } from '@react-three/drei';
 
 const Erosion_model_3D = () => {
   const navigate = useNavigate();
   const handleNavigateToQuizErosion = useCallback(() => {
     navigate('/SensibilizacionErosion');
   }, [navigate]);
+
+  const audioRef = useRef();
+  const handleAudio = useCallback(() => {
+    audioRef.current.play();
+    audioRef.current.setVolume(20);
+  }, []);
+
   return (
     <><Navbarcom />
       <div >
-        <Canvas shadows camera={{ position: [40, 10, 10], zoom: 8 }}
+        <Canvas onClick={handleAudio} shadows camera={{ position: [40, 10, 10], zoom: 8 }}
           style={{ width: "130vw", height: "80vh", position: "absolute" }} >
             <Physics 
                 gravity={[0, 0, 0]}>            
@@ -44,6 +52,9 @@ const Erosion_model_3D = () => {
 
           <Rabbit scale={0.1} position={[12, 0.5, 12]}/>
           <Staging />
+          <group position={[0,0,0]}>
+          <PositionalAudio ref={audioRef} loop url="../../../../sounds/nature.mp3" distance={5}/>
+          </group>
         </Canvas>
 
       </div>
