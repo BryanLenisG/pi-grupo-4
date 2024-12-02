@@ -4,18 +4,19 @@ import { RigidBody } from "@react-three/rapier";
 
 const Forest = (props) => {
   const { nodes, materials } = useGLTF("../../models-3d/forest.glb");
-  const [position, setPosition] = useState([25, -60, 30]);
-  const forestRef = useRef();
+  
 
   return (
-    <group {...props} dispose={null} scale={[40, 40, 40]} position={position} >
+    <group {...props} dispose={null} scale={[20, 20, 20]} position={[0,-2,0]} receiveShadow={true} >
       <RigidBody type="fixed" colliders="trimesh" friction={10}  >
         <group name="Scene"> {/*onClick={() => alert.stopPropagation()}  */}
           <mesh
             name="Object_3"
             geometry={nodes.Object_3.geometry}
             material={materials['Material.001']}
-            reciveShadow
+            receiveShadow={true} 
+            castShadow={true}
+            
           />
         </group>
       </RigidBody >

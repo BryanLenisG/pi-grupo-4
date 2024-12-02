@@ -1,29 +1,34 @@
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import colibri from '../../assets/colibri.jpg';
 import rana from '../../assets/rana.jpg';
 import './Biodiversity.css';
-import { Shadow, SpotLight } from '@react-three/drei';
+import { OrbitControls, Shadow } from '@react-three/drei';
 import Frog from '../../components/model-3d/Model-Bio/Frog';
 import { Canvas } from '@react-three/fiber';
-import Title3DB from '../../components/Title3d';
-import Staging from '../../components/Staging/Staging'
+import Title3DB from './Title3d';
+import Staging from './Staging/Staging';
 import Navbarcom from '../../components/Navbarcom';
 import Forest from '../../components/model-3d/Model-Bio/Forest';
 import { Physics } from '@react-three/rapier';
-import Controls from '../../components/controls/Controls';
 import Bee from '../../components/model-3d/Model-Bio/Bee';
-
-
+import Bird from '../../components/model-3d/Model-Bio/Bird';
+import Video from './Video';
+import Lights from './lights/Lights';
+import TextTitle3D from './Text-3D';
+import PostProcessing from './PostProcessing';
 
 const Biodiversity = () => {
-  const navigate = useNavigate();
+  // Estado para controlar el PostProcessing
+  const [postProcessingEnabled, setPostProcessingEnabled] = useState(true);
 
-  const handleBack = () => {
-    navigate(-1);
+  // Función para alternar el PostProcessing
+  const togglePostProcessing = () => {
+    setPostProcessingEnabled(!postProcessingEnabled);
   };
 
   return (
-    <><Navbarcom />
+    <>
+      <Navbarcom />
       <div className="Bio-container">
         <h2 className='Bio-title'>La perdida de biodiversidad</h2>
         <p className="BioText-introduction">
@@ -43,40 +48,42 @@ const Biodiversity = () => {
           Contaminación: Residuos plásticos y químicos están devastando los hábitats naturales.<br />
           Especies invasoras: La introducción de especies no nativas desequilibra los ecosistemas.<br />
         </p>
+        <p className="BioText-introduction">
+          ¿Como evitar la pérdida de biodiversidad?<br />
+          Concienciarse sobre su importancia y lo que perdemos al dañarla.<br />
+          No adquirir especies exóticas, y mucho menos abandonarlas.<br />
+          Asumir las tres erres ecológicas (reutilizar, reducir, reciclar).<br />
+          Consumir productos sostenibles.<br />
+          Actuar de forma responsable en la naturaleza..<br />
+        </p>
       </div>
+
+      {/* Botón para alternar el PostProcessing */}
+      <button onClick={togglePostProcessing} style={{ position: 'relative', top: '10px', left: '10px', padding: '10px', background: 'rgba(255, 255, 255, 0.5)', border: 'none', cursor: 'pointer',zIndex: 1,  }}>
+        {postProcessingEnabled ? 'Desactivar PostProcessing' : 'Activar PostProcessing'}
+      </button>
 
       <div>
         <div className='frog-container'>
-          <Canvas shadows camera={{ position: [0, 100, 180], zoom: 1 }}  // Valor inicial [X, Y, Z]
-            style={{ width: "100vw", height: "80vh", position: "absolute" }} >
-
-            <ambientLight color={"#08f00ff"} intensity={2} />
-            <SpotLight
-              castShadow
-              color={"red"}
-              position={[10, 50, -50]}
-              intensity={1}
-              penumbra={8}
-              angle={1800}
-              distance={80000}
-              shadow-mapSize={[4096, 4096]}
-              shadow-camera-far={20}
-              shadow-camera-left={-15}
-              shadow-camera-right={15}
-              shadow-camera-top={20}
-            />
-            <Controls />
+          <Canvas shadows camera={{ position: [-250, 350, 50], fov: 25 }} style={{ width: "100vw", height: "80vh", position: "absolute" }}>
+            <OrbitControls />
+            <Lights />
             <Staging />
             <Shadow />
             <Title3DB />
-            <Physics debug gravity={[0, -10, 0]}>
-              <Bee castShadow/>
+            <TextTitle3D />
+            <Physics gravity={[0, -10, 0]}>
+              <Bee castShadow />
+              <Frog castShadow position={[-150, 20, 10]} />
               <Forest />
+              <Bird castShadow />
             </Physics>
-            <Frog castShadow />
+            <Video name="screen" position={[-150, 30, -100]} scale={8} rotation={[0, -Math.PI / 3, 0]} />
+            {/* Renderizado condicional de PostProcessing */}
+            {postProcessingEnabled && <PostProcessing />}
           </Canvas>
         </div>
-      </div >
+      </div>
 
       <img src={colibri} alt="Colibri" className="colibri" />
       <img src={rana} alt="rana" className="rana" />

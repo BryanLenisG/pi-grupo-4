@@ -5,7 +5,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 
 const Frog = (props) => {
   const { nodes, materials } = useGLTF("../../models-3d/Frog.glb");
-  const [position, setPosition] = useState([-10, -60, 0]);  // Valor inicial [X, Y, Z]
+  const [position, setPosition] = useState([-15, 0, 10]);  // Valor inicial [X, Y, Z]
   const frogRef = useRef();
 
   // Manejar las teclas presionadas para mover el modelo
@@ -16,23 +16,23 @@ const Frog = (props) => {
 
       // Mover la rana en el eje X (izquierda/derecha)
       if (event.key === "ArrowLeft") {
-        newPosition[0] -= 1;  // Mover hacia la izquierda
+        newPosition[0] -= 10;  // Mover hacia la izquierda
       } else if (event.key === "ArrowRight") {
-        newPosition[0] += 1;  // Mover hacia la derecha
+        newPosition[0] += 10;  // Mover hacia la derecha
       }
 
       // Mover la rana en el eje Y (arriba/abajo)
       else if (event.key === "ArrowUp") {
-        newPosition[1] += 1;  // Mover hacia arriba
+        newPosition[1] += 10;  // Mover hacia arriba
       } else if (event.key === "ArrowDown") {
-        newPosition[1] -= 1;  // Mover hacia abajo
+        newPosition[1] -= 10;  // Mover hacia abajo
       }
 
       // Mover la rana en el eje Z (adelante/atrás)
       else if (event.key === "w") {
-        newPosition[2] -= 1;  // Mover hacia adelante (en el eje Z negativo)
+        newPosition[2] -= 10;  // Mover hacia adelante (en el eje Z negativo)
       } else if (event.key === "s") {
-        newPosition[2] += 1;  // Mover hacia atrás (en el eje Z positivo)
+        newPosition[2] += 10;  // Mover hacia atrás (en el eje Z positivo)
       }
 
       // Actualizar el estado con la nueva posición
@@ -49,13 +49,15 @@ const Frog = (props) => {
     };
   }, [position]);
 
+
+
   // const handleFrog= useCallback(() => {
   //   frogRef.current.addTorque({ x: 0, y: 10, z: -5 }, true);
   //   }, []);
   return (
 
-    <group {...props} dispose={null} scale={[0.2, 0.2, 0.2]} castShadow >
-      {/* <RigidBody ref={frogRef} colliders='trimesh' friction={2}  type='fixed'> */}
+    <group {...props} dispose={null} scale={[0.1, 0.1, 0.1]} >
+      <RigidBody ref={frogRef} rotation={[0, -Math.PI / 2, 0]} position={position} >
         <group name="Scene">
           <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
             <group name="73d8868d7414472898889cf5a032e3c1fbx" rotation={[Math.PI / 2, 0, 0]}>
@@ -81,6 +83,7 @@ const Frog = (props) => {
             geometry={nodes.Object_10.geometry}
             material={materials.lambert4SG}
             onClick = {() => alert("La rana esta en peligro de extincion..")}
+            castShadow
             // onClick={handleFrog}
           />
           <group
@@ -89,8 +92,8 @@ const Frog = (props) => {
             rotation={[-0.279, 0.327, -0.16]}
           />
         </group>
-        {/* <CuboidCollider args={[0.1,0.5,0.1]} position={props.position}/> */}
-      {/* </RigidBody> */}
+
+      </RigidBody> 
     </group>
   );
 };
