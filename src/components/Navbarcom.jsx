@@ -39,7 +39,8 @@ function Navbarcom() {
                         <Nav.Link as={Link} to="/home">Home</Nav.Link>
                         <Nav.Link as={Link} to="/biodiversity">Biodiversidad</Nav.Link>
                         <Nav.Link as={Link} to="/deforest">Deforestación</Nav.Link>
-                        <Nav.Link as={Link} to="/erosion">Erosión</Nav.Link>
+                        <Nav.Link as={Link} to="/erosion">Erosión</Nav.Link>  
+                        <Nav.Link as={Link} to="/QuizErosion">QUIZ</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Button variant="outline-success" onClick={handleLogout}>Cerrar Sesión</Button>
