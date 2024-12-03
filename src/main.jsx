@@ -10,7 +10,7 @@ import "./index.css";
 import Erosion_model_3D from "./pages/erosion/erosion_model_3D/Erosion_model_3D.jsx"
 import QuizErosion from "./pages/erosion/quiz_erosion/QuizErosion.jsx"
 import SensibilizacionErosion from "./pages/erosion/quiz_erosion/SensibilizacionErosion.jsx"
-
+import Quiz from "./pages/quiz/Quiz.jsx";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from "./pages/login/Login.jsx";
 
@@ -22,6 +22,7 @@ function main(){
         <Route path="/biodiversity" element={<Biodiversity />} />
         <Route path="/deforest" element={<Deforest />} />
         <Route path="/erosion" element={<Erosion />} />
+        <Route path="/quiz" element={<Quiz />} />
       </Routes>
     </Router>
 }
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
   {
     path: "/SensibilizacionErosion",
     element: <SensibilizacionErosion />,
+  },
+  {
+    path: "/Quiz",
+    element: <Quiz />,
   },
 ]);
 createRoot(document.getElementById("root")).render(

@@ -7,7 +7,7 @@ const Staging = () => {
         <Environment ground={{
             height: 20,
             radius:60,
-            scale: 100
+            scale: 50
         }} preset="forest" background={true}/>
         </>
     )
