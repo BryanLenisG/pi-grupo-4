@@ -74,12 +74,24 @@ const Home = () => {
         </div>
       </div>
       <div className="home-container">
-        <Canvas camera={{ position: [50, 0, 10], zoom: 3 }}
-          style={{ width: "130vw", height: "80vh", position: "absolute" }} >
+        <Canvas camera={{ position: [50, 0, 10], zoom: 3 }} style={{ width: "130vw", height: "80vh", position: "absolute" }}>
+          {/* Luces para sombras */}
           <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 10]} intensity={5} />
+          <directionalLight 
+            position={[10, 10, 10]} 
+            intensity={5} 
+            castShadow // Habilita las sombras
+          />
+          <spotLight 
+            position={[0, 10, 0]} 
+            angle={0.15} 
+            penumbra={1} 
+            castShadow 
+          />
+          {/* El modelo de la hormiga */}
+          <Ant position={[10, 0, 0]} castShadow receiveShadow />
+          {/* Habilitar controles orbit */}
           <OrbitControls autoRotate={false} />
-          <Ant position={[10, 0, 0]} />
         </Canvas>
       </div>
     </div>
