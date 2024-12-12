@@ -73,7 +73,7 @@ const Biodiversity = () => {
             <Title3DB />
             <TextTitle3D />
             <Physics gravity={[0, -10, 0]}>
-              <Bee castShadow />
+              <Bee  castShadow position={[-180, 150, 90]}scale={[10, 10, 10]}/>
               <Frog castShadow position={[-150, 20, 10]} />
               <Forest />
               <Bird castShadow />

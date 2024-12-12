@@ -1,0 +1,32 @@
+.quiz-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    height: auto;
+    padding: 40px;
+    margin-top: 80px; 
+    text-align: center;
+  }
+  .quiz-title{
+    margin: 0 auto;
+    font-size: 50px; 
+  }
+  
+  .quiz-text {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    max-width: 500px;
+  }
+  
+  
+  .save_our_planet {
+    position: absolute;
+    top: 180px;
+    left: 950px;
+  }
