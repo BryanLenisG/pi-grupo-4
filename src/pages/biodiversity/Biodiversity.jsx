@@ -76,7 +76,7 @@ const Biodiversity = () => {
               <Bee  castShadow position={[-180, 150, 90]}scale={[10, 10, 10]}/>
               <Frog castShadow position={[-150, 20, 10]} />
               <Forest />
-              <Bird castShadow />
+              <Bird castShadow scale={[10,10,10]} position={[-45, 50, 140]} />
             </Physics>
             <Video name="screen" position={[-150, 30, -100]} scale={8} rotation={[0, -Math.PI / 3, 0]} />
             {/* Renderizado condicional de PostProcessing */}
