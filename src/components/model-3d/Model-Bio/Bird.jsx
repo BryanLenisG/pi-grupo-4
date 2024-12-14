@@ -5,7 +5,7 @@ import { useState, useRef,  useEffect } from 'react';
 
 const Bird = (props) => {
     const { nodes, materials,animations } = useGLTF("../../models-3d/bird.glb");
-    const [position] = useState([-45, 50, 140]);  // Valor inicial [X, Y, Z]
+    // const [position] = useState([-45, 50, 140]);  // Valor inicial [X, Y, Z]
     const birdRef = useRef();
     const { actions } = useAnimations(animations, birdRef)
     console.log(actions);
@@ -16,7 +16,7 @@ const Bird = (props) => {
     },[actions]);
     return (
         <RigidBody type="fixed" rotation={[0, -Math.PI / 2, 0]}>
-            <group {...props} dispose={null} scale={[10, 10, 10]} position={position} ref={birdRef}   >
+            <group {...props} dispose={null}  ref={birdRef}   >
 
                 <group name="Scene">
                     <group name="Empty" rotation={[0, 1.571, 0]} />
@@ -43,9 +43,6 @@ const Bird = (props) => {
 
             </group>
         </RigidBody>
-
-
-        // onClick={() => alert("La rana esta en peligro de extincion..")}    
     );
 };
 
