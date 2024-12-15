@@ -14,6 +14,7 @@ import { Physics } from '@react-three/rapier';
 import Bird from '../../components/model-3d/Model-Bio/Bird';
 import ArbolQuiz from "../../components/model-3d/Tree2";
 import { Html } from "@react-three/drei";
+import Basura from "../../components/model-3d/Basura"
 
 
 const Quiz = () => {
@@ -166,7 +167,8 @@ const Quiz = () => {
 
             return (
                 <>
-                    <ArbolQuiz scale={adjustedScale} position={adjustedPosition} onClick={handleRecogerBasuraClick}/>
+                    <ArbolQuiz scale={adjustedScale} position={adjustedPosition} />
+                    <Basura scale={[0.2,0.2,0.2]} position={[5,-3.8,-6]} onClick={handleRecogerBasuraClick}/>
                     {feedback && (
                         <Html position={[5, 3, -12]} center>
                             <div className="feedback">{feedback}</div>
