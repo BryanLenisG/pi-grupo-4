@@ -61,4 +61,5 @@
     margin-top: 20px;
     color: green;
     font-weight: bold;
+    -webkit-text-stroke: 0.25px white
 }

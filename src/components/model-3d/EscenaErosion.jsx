@@ -53,8 +53,8 @@ const EscenaErosion = (props) => {
     <OrbitControls
       enablePan={false} // Desactiva el movimiento lateral
       enableRotate={true} // Activa la rotación
-      // minPolarAngle={Math.PI / 2.2} // Restringe la rotación hacia arriba/abajo
-      // maxPolarAngle={Math.PI / 2.2} // Restringe la rotación hacia arriba/abajo
+      minPolarAngle={Math.PI / 2.2} // Restringe la rotación hacia arriba/abajo
+      maxPolarAngle={Math.PI / 2.2} // Restringe la rotación hacia arriba/abajo
       target={[0, 0, 0]} // Centro de rotación
   />
     </>
