@@ -35,9 +35,21 @@ const Quiz = () => {
         setShowQuestion(true); // Muestra la pregunta
     };
 
+    const handleTreePlantarClick = () => {
+        
+        setTreeState("restaurado");
+    };
+
+    const handleRecogerBasuraClick = () => {
+        
+        setTreeState("restaurado_biodiversidad");
+        setFeedback("¡La naturaleza ha sido restaurada, sigue cuidandola!");
+    };
+
     const handleAnswer = (isCorrect) => {
         if (isCorrect) {
-            setTreeState("restored");
+            setTreeState("plantar");
+            setFeedback("Correcto! Intenta plantar un nuevo árbol");
         } else {
             setTreeState("dry");
             setFeedback("Respuesta incorrecta. Inténtalo de nuevo.");
@@ -48,7 +60,8 @@ const Quiz = () => {
 
     const handleAnswer2 = (isCorrect) => {
         if (isCorrect) {
-            setTreeState("restored2");
+            setTreeState("recoger_basura");
+            setFeedback("Correcto! Recoge la basura del bosque");
         } else {
             setTreeState("dry2");
             setFeedback("Respuesta incorrecta. Inténtalo de nuevo.");
@@ -59,7 +72,29 @@ const Quiz = () => {
 
 
     const TreeComponent = () => {
-        if (treeState === "restored") {
+        if (treeState === "restaurado") {
+            const adjustedScale = [220, 220, 220];
+            const adjustedPosition = [-63.5, -15 + (adjustedScale[1] / 2) * 0.01, -108];
+
+            return (
+                <>
+                    <ArbolQuiz scale={adjustedScale} position={adjustedPosition} />
+
+                    {showQuestion2 && (
+                        <Html position={[5, 3, -12]} center>
+                            <div className="question-modal2">
+                                <p>¡Correcto! La naturaleza empieza a restaurarse. 
+                                Ahora ¿Cómo puedes evitar la pérdida de biodiversidad?</p>
+                                <button onClick={() => handleAnswer2(true)}>No arrojando basura en el suelo</button>
+                                <button onClick={() => handleAnswer2(false)}>Nada</button>
+                            </div>
+                        </Html>
+                    )}
+                </>
+            );
+        }
+
+        if (treeState === "restaurado_biodiversidad") {
             const adjustedScale = [220, 220, 220];
             const adjustedPosition = [-63.5, -15 + (adjustedScale[1] / 2) * 0.01, -108];
 
@@ -68,16 +103,6 @@ const Quiz = () => {
                     <ArbolQuiz scale={adjustedScale} position={adjustedPosition} />
                     <Bird position={[5, 2, -15]} scale={[0.2, 0.2, 0.2]} />
 
-                    {showQuestion2 && (
-                        <Html position={[5, 3, -12]} center>
-                            <div className="question-modal2">
-                                <p>¡Correcto! El árbol ha sido restaurado. 
-                                Ahora ¿Cómo puedes evitar la pérdida de biodiversidad?</p>
-                                <button onClick={() => handleAnswer2(true)}>No arrojando basura en el suelo</button>
-                                <button onClick={() => handleAnswer2(false)}>Nada</button>
-                            </div>
-                        </Html>
-                    )}
                     {feedback && (
                         <Html position={[5, 3, -12]} center>
                             <div className="feedback">{feedback}</div>
@@ -86,10 +111,62 @@ const Quiz = () => {
                 </>
             );
         }
+        
         if (treeState === "dry") {
             return (
                 <>
                     <Tree position={[5, -2.7, -15]} onClick={handleTreeClick} />
+                    {feedback && (
+                        <Html position={[5, 0, -12]} center>
+                            <div className="feedback">{feedback}</div>
+                        </Html>
+                    )}
+                </>
+            );
+        }
+        if (treeState === "dry2") {
+            const adjustedScale = [220, 220, 220];
+            const adjustedPosition = [-63.5, -15 + (adjustedScale[1] / 2) * 0.01, -108];
+            return (
+                <>
+                    <ArbolQuiz scale={adjustedScale} position={adjustedPosition} />
+                    {showQuestion2 && (
+                        <Html position={[5, 3, -12]} center>
+                            <div className="question-modal2">
+                                <p>¡Correcto! La naturaleza empieza a restaurarse. 
+                                Ahora ¿Cómo puedes evitar la pérdida de biodiversidad?</p>
+                                <button onClick={() => handleAnswer2(true)}>No arrojando basura en el suelo</button>
+                                <button onClick={() => handleAnswer2(false)}>Nada</button>
+                            </div>
+                        </Html>
+                    )}
+                    {feedback && (
+                        <Html position={[5.42, -2, -5]} center>
+                            <div className="feedback">{feedback}</div>
+                        </Html>
+                    )}
+                </>
+            );
+        }
+        if (treeState === "plantar"){
+            return (
+                <>
+                    <Tree position={[5, -2.7, -15]} onClick={handleTreePlantarClick} />
+                    {feedback && (
+                        <Html position={[3, 0, -8]} center>
+                            <div className="feedback">{feedback}</div>
+                        </Html>
+                    )}
+                </>
+            );
+        }
+        if (treeState === "recoger_basura") {
+            const adjustedScale = [220, 220, 220];
+            const adjustedPosition = [-63.5, -15 + (adjustedScale[1] / 2) * 0.01, -108];
+
+            return (
+                <>
+                    <ArbolQuiz scale={adjustedScale} position={adjustedPosition} onClick={handleRecogerBasuraClick}/>
                     {feedback && (
                         <Html position={[5, 3, -12]} center>
                             <div className="feedback">{feedback}</div>
