@@ -42,18 +42,55 @@
     z-index: 1000;
 }
 
+.question-modal23 {
+  position: fixed;
+  font-size: 16px;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  background-color: white;
+  margin: 15px 10px;  
+  width: 300px; /* Ancho fijo para los botones */
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  line-height: 1.6; /* Aumenta el espaciado entre líneas */
+  transition: background-color 0.3s transform 0.2s;
+}
+
 .question-modal2 {
   position: fixed;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  width: 250px; /* Define un ancho fijo */
-  line-height: 1.6; /* Aumenta el espaciado entre líneas */
+  padding: 20px; /* Increased padding for more space */
+  width: 300px; /* Fixed width for buttons */
+  font-size: 16px;
+  line-height: 1.5; /* Adjust line height for better readability */
+
+  /* Button styles */
+  button {
+      display: block;
+      margin: 10px 0; /* Adjust margin for button spacing */
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff; /* Blue */
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+          background-color: #0056b3; /* Darker blue on hover */
+      }
+  }
 }
 
 .feedback {
