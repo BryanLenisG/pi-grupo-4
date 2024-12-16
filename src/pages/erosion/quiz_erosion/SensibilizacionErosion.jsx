@@ -9,16 +9,24 @@ import suelo from '../../../assets/suelo.jpg';
 const SensibilizacionErosion = () => {
   const navigate = useNavigate();
   const handleNavigateToQuizErosion = useCallback(() => {
-    navigate('/QuizErosion');
+    navigate('/quiz');
   }, [navigate]);
    
   return (
     <>
     <Navbarcom />
-    <div className="sensibilizacion-erosion-text-container">
-    <div className="sensibilizacion-erosion-text">
+    <div className="Bio-container">
+    <div className="BioText-introduction">
         <p>
         La tala indiscriminada de árboles provoca graves daños al suelo. Al perder la cobertura vegetal, el suelo queda expuesto a la erosión, ya que las raíces que lo mantenían unido y absorbían agua desaparecen.
+        </p>
+    </div>
+    <div className="BioText-introduction">
+        <p>
+        Unas de las acciones para evitar la erosion del suelo son:<br />
+        -Plantar árboles y cuidar las plantas.<br />
+        -No tirar basura en la naturaleza.<br />
+        -Protege los bosques.<br />
         </p>
     </div>
 </div>
