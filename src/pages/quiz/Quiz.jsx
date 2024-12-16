@@ -29,6 +29,7 @@ const Quiz = () => {
     const [showQuestion, setShowQuestion] = useState(false);
     const [showQuestion2, setShowQuestion2] = useState(true);
     const [feedback, setFeedback] = useState("");
+    const [showStartMessage, setShowStartMessage] = useState(true);
 
      // Estado de progreso del quiz
      const [progress, setProgress] = useState(0); 
@@ -42,6 +43,7 @@ const Quiz = () => {
     const handleTreeClick = () => {
         setFeedback("");
         setShowQuestion(true); // Muestra la pregunta
+        setShowStartMessage(false); // **Oculta el mensaje inicial**
     };
 
     const handleTreePlantarClick = () => {
@@ -131,10 +133,19 @@ const Quiz = () => {
             );
         }
 
+
         if (treeState === "dry") {
             return (
                 <>
                     <Tree position={[5, -2.7, -15]} onClick={handleTreeClick} />
+                    {/* **Nuevo mensaje inicial sobre el árbol** */}
+                    {showStartMessage && (
+                        <Html position={[5, 2, -12]} center>
+                            <div className="start-message" style={{ color: "blue", fontSize: "2em", textAlign: "center" }}>
+                                <p>Para iniciar el quiz, presiona el árbol</p>
+                            </div>
+                        </Html>
+                    )}
                     {feedback && (
                         <Html position={[5, 0, -12]} center>
                             <div className="feedback">{feedback}</div>
@@ -143,6 +154,9 @@ const Quiz = () => {
                 </>
             );
         }
+
+
+
         if (treeState === "dry2") {
             const adjustedScale = [220, 220, 220];
             const adjustedPosition = [-63.5, -15 + (adjustedScale[1] / 2) * 0.01, -108];
