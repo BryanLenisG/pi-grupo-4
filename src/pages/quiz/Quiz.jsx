@@ -15,6 +15,9 @@ import Bird from '../../components/model-3d/Model-Bio/Bird';
 import ArbolQuiz from "../../components/model-3d/Tree2";
 import { Html } from "@react-three/drei";
 import Basura from "../../components/model-3d/Basura"
+import Manzana from "../../components/model-3d/Manzana";
+import Rabbit from "../../components/model-3d/Rabbit";
+import Quiz_text from "./Quiz_text";
 
 
 const Quiz = () => {
@@ -72,6 +75,7 @@ const Quiz = () => {
     };
 
 
+
     const TreeComponent = () => {
         if (treeState === "restaurado") {
             const adjustedScale = [220, 220, 220];
@@ -87,7 +91,9 @@ const Quiz = () => {
                                 <p>¡Correcto! La naturaleza empieza a restaurarse. 
                                 Ahora ¿Cómo puedes evitar la pérdida de biodiversidad?</p>
                                 <button onClick={() => handleAnswer2(true)}>No arrojando basura en el suelo</button>
-                                <button onClick={() => handleAnswer2(false)}>Nada</button>
+                                <button onClick={() => handleAnswer2(false)}>Haciendo fogatas en el bosque</button>
+                                <button onClick={() => handleAnswer2(false)}>Alimentar a los animales salvajes</button>
+
                             </div>
                         </Html>
                     )}
@@ -103,10 +109,12 @@ const Quiz = () => {
                 <>
                     <ArbolQuiz scale={adjustedScale} position={adjustedPosition} />
                     <Bird position={[5, 2, -15]} scale={[0.2, 0.2, 0.2]} />
-
+                    <Rabbit scale={0.4} position={[-1, -3.79, -6]}/>
+                    <Quiz_text />
                     {feedback && (
                         <Html position={[5, 3, -12]} center>
                             <div className="feedback">{feedback}</div>
+                            
                         </Html>
                     )}
                 </>
@@ -132,12 +140,13 @@ const Quiz = () => {
                 <>
                     <ArbolQuiz scale={adjustedScale} position={adjustedPosition} />
                     {showQuestion2 && (
-                        <Html position={[5, 3, -12]} center>
+                        <Html position={[-1, 3, -12]} center>
                             <div className="question-modal2">
                                 <p>¡Correcto! La naturaleza empieza a restaurarse. 
                                 Ahora ¿Cómo puedes evitar la pérdida de biodiversidad?</p>
                                 <button onClick={() => handleAnswer2(true)}>No arrojando basura en el suelo</button>
-                                <button onClick={() => handleAnswer2(false)}>Nada</button>
+                                <button onClick={() => handleAnswer2(false)}>Haciendo fogatas en el bosque</button>
+                                <button onClick={() => handleAnswer2(false)}>Alimentar a los animales salvajes</button>
                             </div>
                         </Html>
                     )}
@@ -152,12 +161,14 @@ const Quiz = () => {
         if (treeState === "plantar"){
             return (
                 <>
-                    <Tree position={[5, -2.7, -15]} onClick={handleTreePlantarClick} />
+                    <Tree position={[5, -2.7, -15]}  />
+                    <Manzana position={[3, -3.9, -10]} scale={[0.4, 0.4,0.4]} onClick={handleTreePlantarClick}/>
                     {feedback && (
                         <Html position={[3, 0, -8]} center>
                             <div className="feedback">{feedback}</div>
                         </Html>
                     )}
+
                 </>
             );
         }
@@ -178,6 +189,9 @@ const Quiz = () => {
             );
         }
         return <Tree position={[5, -2.7, -15]} onClick={handleTreeClick} />;
+
+        
+
     };
 
     return (
@@ -198,16 +212,16 @@ const Quiz = () => {
                         <OrbitControls />
                         <Physics>
                             <TreeComponent />
-                            <EscenaErosion position={[0, -8, 0]} scale={[80, 80, 80]}
-                            />
+                            <EscenaErosion position={[0, -8, 0]} scale={[80, 80, 80]}/>
                         </Physics>
                     </Canvas>
                 </div>
                 {showQuestion && (
-                    <div className="question-modal">
+                    <div className="question-modal2" >
                         <p>¿Qué puedes hacer para restaurar el árbol?</p>
                         <button onClick={() => handleAnswer(true)}>Reforestar y proteger el área</button>
-                        <button onClick={() => handleAnswer(false)}>Nada</button>
+                        <button onClick={() => handleAnswer(false)}>Prendiendole fuego</button>
+                        <button onClick={() => handleAnswer(false)}>Explotar el suelo fértil</button>
                     </div>
                 )}
             </div>
