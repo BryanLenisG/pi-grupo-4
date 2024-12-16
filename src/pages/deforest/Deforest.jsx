@@ -132,16 +132,16 @@ const Deforest = () => {
 
   // Reproducir el audio al cargar la página
   useEffect(() => {
-    const audio = new Audio('/audio.mp3'); // Ruta al archivo de audio
+    const audio = new Audio('/sounds/caida.mp3'); // Ruta al archivo de audio
     audio.play();
-    audio.loop = true; // Si quieres que el audio se repita en un bucle
+    audio.volume = 0.1;
   }, []);
 
   return (
     <>
       <Navbarcom />
       <div className="container-deforest">
-        <h1>LA DEFORESTACION 1</h1>
+        <h1>LA DEFORESTACION </h1>
         <p>
           Esta práctica afecta a los bosques y al clima global, tiene unas causas e impactos que atacan directamente al medio ambiente. Conoce las causas y soluciones para combatirla.
         </p>
