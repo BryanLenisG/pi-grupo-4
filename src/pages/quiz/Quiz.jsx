@@ -29,6 +29,10 @@ const Quiz = () => {
     const [showQuestion2, setShowQuestion2] = useState(true);
     const [feedback, setFeedback] = useState("");
 
+     // Estado de progreso del quiz
+     const [progress, setProgress] = useState(0); 
+     const totalQuestions = 3;
+
     const handleLogout = useCallback(() => {
         logout();
         navigate('/');
@@ -48,12 +52,16 @@ const Quiz = () => {
         
         setTreeState("restaurado_biodiversidad");
         setFeedback("¡La naturaleza ha sido restaurada, sigue cuidandola!");
+        setProgress(100); // Llenar la barra al 100%
     };
+
+
 
     const handleAnswer = (isCorrect) => {
         if (isCorrect) {
             setTreeState("plantar");
             setFeedback("Correcto! Intenta plantar un nuevo árbol");
+            setProgress((prev) => prev + (100 / totalQuestions));  //Funciones que incrementan el progreso         
         } else {
             setTreeState("dry");
             setFeedback("Respuesta incorrecta. Inténtalo de nuevo.");
@@ -66,6 +74,7 @@ const Quiz = () => {
         if (isCorrect) {
             setTreeState("recoger_basura");
             setFeedback("Correcto! Recoge la basura del bosque");
+            setProgress((prev) => prev + (100 / totalQuestions));
         } else {
             setTreeState("dry2");
             setFeedback("Respuesta incorrecta. Inténtalo de nuevo.");
@@ -81,7 +90,7 @@ const Quiz = () => {
             const adjustedScale = [220, 220, 220];
             const adjustedPosition = [-63.5, -15 + (adjustedScale[1] / 2) * 0.01, -108];
 
-            return (
+            return (    
                 <>
                     <ArbolQuiz scale={adjustedScale} position={adjustedPosition} />
 
@@ -199,6 +208,13 @@ const Quiz = () => {
             <Navbarcom />
             <div className="quiz-container">
                 <h1 className="quiz-title">Quiz</h1>
+
+                {/* Barra de progreso */}
+                <div className="progress-bar-container"> 
+                    <div className="progress-bar" style={{ width: `${progress}%` }}></div> 
+                  </div>
+
+
                 {/* <p className="quiz-text">
                     Explora nuestro mundo virtual en 3D y descubre los desafíos medioambientales más críticos que enfrentamos hoy en día.
                 </p> */}
