@@ -15,6 +15,7 @@
     color: #333; /* Color del texto */
     max-width: 600px; /* Ancho máximo del texto */
     text-align: center; /* Centra el texto */
+    line-height: 1.5;
 }
 
 .suelo {
@@ -32,7 +33,7 @@
   .button-continue-quiz-erosion {
     position: fixed;
     top: 600px;
-    left: 650px; /* Cambia 'rigth' por 'left' para mover el botón a la izquierda */
+    left: 730px; /* Cambia 'rigth' por 'left' para mover el botón a la izquierda */
     background-color: white;
     color: white;
     border: none;
