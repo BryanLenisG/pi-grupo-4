@@ -228,15 +228,25 @@ const Quiz = () => {
                 <h1 className="quiz-title">Quiz</h1>
 
                 {/* Barra de progreso */}
-                <div className="progress-bar-container"> 
-                    <div className="progress-bar" style={{ width: `${progress}%` }}></div> 
-                  </div>
+                <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+                    <div className="progress-wrapper">
+                        <p className="progress-text">Tu progreso</p>
+                        <div className="progress-bar-container">
+                            <div
+                                className="progress-bar"
+                                style={{ width: `${progress}%` }}
+                            ></div>
+                        </div>
+                    </div>
+                </div>
 
 
                 {/* <p className="quiz-text">
                     Explora nuestro mundo virtual en 3D y descubre los desafíos medioambientales más críticos que enfrentamos hoy en día.
                 </p> */}
                 {/* <img src={save_our_planet} alt="save_our_planet" className="save_our_planet" /> */}
+
+
                 <div className="eart-container">
                     <Canvas shadows camera={{ position: [0, 20, -10], fov: 55 }}
                         style={{ width: "98vw", height: "80vh", position: "absolute" }} >

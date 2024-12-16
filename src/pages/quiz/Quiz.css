@@ -101,17 +101,33 @@
     -webkit-text-stroke: 0.25px white
 }
 
+.progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo verticalmente */
+  max-width: 300px; /* Define un ancho máximo para que no se expanda demasiado */
+  width: 100%; /* Se ajusta al ancho disponible */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+.progress-text {
+  margin-bottom: 8px; /* Espacio entre el texto y la barra */
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #555;
+  text-align: center; /* Asegura que el texto quede centrado */
+}
+
 .progress-bar-container {
-  width: 100%;
+  width: 100%; /* Toma el ancho del wrapper */
   height: 20px;
-  background-color: #ddd;
+  background-color: #ddd; /* Color de fondo */
   border-radius: 10px;
-  margin-bottom: 20px;
+  overflow: hidden; /* Evita que el relleno se salga */
 }
 
 .progress-bar {
   height: 100%;
-  background-color: #4caf50;
-  border-radius: 10px;
-  transition: width 0.5s ease;
+  background-color: #4caf50; /* Color del progreso */
+  transition: width 0.5s ease; /* Animación al aumentar progreso */
 }
