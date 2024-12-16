@@ -4,7 +4,8 @@ import Navbarcom from '../../components/Navbarcom';
 import Tree from '../../components/model-3d/Tree';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sky, Text } from '@react-three/drei';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';  // Aquí se agrega useEffect
+import { Physics, useBox, usePlane } from '@react-three/cannon';
 
 const RotatingTree = () => {
   const treeRef = useRef();
@@ -79,6 +80,37 @@ const RotatingTree = () => {
   );
 };
 
+// : Cubo con físicas
+const PhysicsCube = () => { 
+  const [ref] = useBox(() => ({ 
+    mass: 1, // Masa del cubo para la física 
+    position: [0, 5, 0], // Posición inicial del cubo 
+    args: [1, 1, 1], // Dimensiones del cubo 
+  }));
+
+  return (
+    <mesh ref={ref} castShadow> 
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color="orange" /> 
+    </mesh>
+  );
+};
+
+// : Plano con físicas
+const PhysicsPlane = () => { 
+  const [ref] = usePlane(() => ({ 
+    rotation: [-Math.PI / 2, 0, 0], // Plano horizontal 
+    position: [0, 0, 0], // Posición del plano 
+  }));
+
+  return (
+    <mesh ref={ref} receiveShadow> 
+      <planeGeometry args={[50, 50]} /> 
+      <shadowMaterial opacity={0.5} /> 
+    </mesh>
+  );
+};
+
 const Deforest = () => {
   const navigate = useNavigate();
 
@@ -89,7 +121,7 @@ const Deforest = () => {
 
   // Función para manejar el botón de "Realizar Quiz"
   const handleQuiz = () => {
-    navigate('/quiz'); // Cambiar por furuta ruta*****
+    navigate('/quiz'); // Cambiar por furuta ruta
   };
 
   // Estado para manejar la visibilidad del contenido completo
@@ -97,6 +129,13 @@ const Deforest = () => {
 
   // Función para manejar el "Ver más"
   const toggleShowMore = () => setShowMore((prev) => !prev);
+
+  // Reproducir el audio al cargar la página
+  useEffect(() => {
+    const audio = new Audio('/audio.mp3'); // Ruta al archivo de audio
+    audio.play();
+    audio.loop = true; // Si quieres que el audio se repita en un bucle
+  }, []);
 
   return (
     <>
@@ -145,7 +184,7 @@ const Deforest = () => {
         <Canvas
           shadows
           camera={{ position: [20, 10, 20], fov: 30 }}
-          style={{ width: '100%', height: '300px' }}
+          style={{ width: '100%', height: '400px' }}
         >
           <Sky 
             azimuth={0.25}
@@ -156,12 +195,16 @@ const Deforest = () => {
 
           <ambientLight intensity={0.5} />
 
-          <RotatingTree />
-
           <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
             <planeGeometry args={[50, 50]} />
             <shadowMaterial opacity={0.5} />
           </mesh>
+
+          <Physics> 
+            <PhysicsPlane /> 
+            <RotatingTree /> 
+            <PhysicsCube />
+          </Physics>
 
           <OrbitControls />
         </Canvas>
